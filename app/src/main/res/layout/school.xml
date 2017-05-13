@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar2">
+    </include>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/school"
+        android:id="@+id/image_layout"
+        android:adjustViewBounds="true"
+        android:layout_below="@+id/toolbar2"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="St Xavier's High School"
+        android:textColor="#fff"
+        android:layout_alignBottom="@+id/image_layout"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="15dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History of school"
+        android:layout_below="@+id/image_layout"
+        android:id="@+id/description"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="St. Xavier’s School is run by the Society of Jesus, an international Christian religious order that follows the teachings of the Roman Catholic Church, founded by Ignatius of Loyola in 1540. The members of the Society are popularly known as the Jesuits. The Society is headquartered in Rome. The Jesuits are primarily known for their work in education (like founding schools, colleges, universities and seminaries), intellectual research, and cultural pursuits, and for their missionary efforts in human rights and social justice. They are one of the largest educational bodies in the world. From their humble beginning in Europe in 1540 they have etched their presence in 112 nations on six continents."
+        android:layout_below="@+id/description"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="14dp"/>
+
+    </RelativeLayout>
