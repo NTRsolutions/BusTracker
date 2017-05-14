@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 
 import com.project.verbosetech.bustracker.Others.DelayAutoCompleteTextView;
 import com.project.verbosetech.bustracker.Others.GeoAutoCompleteAdapter;
@@ -24,7 +23,7 @@ public class PIckUpFragment extends Fragment {
     private View view;
     private Integer THRESHOLD = 2;
     private DelayAutoCompleteTextView geo_autocomplete;
-    private ImageView geo_autocomplete_clear;
+//    private ImageView geo_autocomplete_clear;
 
     public PIckUpFragment() {
         // Required empty public constructor
@@ -40,7 +39,7 @@ public class PIckUpFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.location_fragment_1, container, false);
-        geo_autocomplete_clear = (ImageView) view.findViewById(R.id.geo_autocomplete_clear);
+//        geo_autocomplete_clear = (ImageView) view.findViewById(R.id.geo_autocomplete_clear);
 
         geo_autocomplete = (DelayAutoCompleteTextView) view.findViewById(R.id.geo_autocomplete);
         geo_autocomplete.setThreshold(THRESHOLD);
@@ -69,22 +68,22 @@ public class PIckUpFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 if(s.length() > 0)
                 {
-                    geo_autocomplete_clear.setVisibility(View.VISIBLE);
+//                    geo_autocomplete_clear.setVisibility(View.VISIBLE);
                 }
                 else
                 {
-                    geo_autocomplete_clear.setVisibility(View.GONE);
+//                    geo_autocomplete_clear.setVisibility(View.GONE);
                 }
             }
         });
 
-        geo_autocomplete_clear.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                geo_autocomplete.setText("");
-            }
-        });
+//        geo_autocomplete_clear.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                geo_autocomplete.setText("");
+//            }
+//        });
 
         return view;
     }
