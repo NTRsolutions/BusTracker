@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,9 +19,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.verbosetech.bustracker.Fragments.HomeFragment;
-import com.project.verbosetech.bustracker.Fragments.MoviesFragment;
 import com.project.verbosetech.bustracker.Fragments.NotificationsFragment;
-import com.project.verbosetech.bustracker.Fragments.PhotosFragment;
+import com.project.verbosetech.bustracker.Fragments.SettingsFragment;
+import com.project.verbosetech.bustracker.Others.PrefManager;
 import com.project.verbosetech.bustracker.R;
 
 /**
@@ -55,12 +56,15 @@ public class MainActivity extends AppCompatActivity {
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
 
+    PrefManager prefManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        prefManager=new PrefManager(getApplicationContext());
 
         mHandler = new Handler();
 
@@ -150,18 +154,9 @@ public class MainActivity extends AppCompatActivity {
                 // home
                 HomeFragment homeFragment = new HomeFragment();
                 return homeFragment;
-            case 1:
-                // photos
-                PhotosFragment photosFragment = new PhotosFragment();
-                return photosFragment;
-            case 2:
-                // movies fragment
-                MoviesFragment moviesFragment = new MoviesFragment();
-                return moviesFragment;
             case 3:
-                // notifications fragment
-//                NotificationsFragment notificationsFragment = new NotificationsFragment();
-//                return notificationsFragment;
+                SettingsFragment settingsFragment = new SettingsFragment();
+                return settingsFragment;
 
             default:
                 return new HomeFragment();
@@ -233,6 +228,14 @@ public class MainActivity extends AppCompatActivity {
 
                     startActivity(new Intent(MainActivity.this,AboutSchoolActivity.class));
 
+                else if(navItemIndex==2)
+
+                    startActivity(new Intent(MainActivity.this,LocationActivity.class));
+
+                else if(navItemIndex==1)
+
+                    startActivity(new Intent(MainActivity.this,LocationActivity.class));
+
                 else
 
                 loadHomeFragment();
@@ -283,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
         }
+        prefManager.setNotifyStatus(null);
 
         super.onBackPressed();
     }
@@ -298,11 +302,29 @@ public class MainActivity extends AppCompatActivity {
 
         if(item.getItemId()==R.id.action_message)
         {
-            Fragment fragment =new NotificationsFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.frame,fragment,CURRENT_TAG).addToBackStack(CURRENT_TAG).commit();
+
+            Fragment fragment1 =new NotificationsFragment();
+            Fragment fragment2=new HomeFragment();
+            if(prefManager.getNotifyStatus()==null){
+
+            getSupportFragmentManager().beginTransaction().add(R.id.frame,fragment1,CURRENT_TAG).addToBackStack(CURRENT_TAG).commit();
+            prefManager.setNotifyStatus("1");
+                Log.e("1","1");
+            }
+            else
+            {
+                Fragment fragment=new HomeFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame,fragment2).commitAllowingStateLoss();
+                prefManager.setNotifyStatus(null);
+                Log.e("Null","Null");
+            }
         }
+
+
         return true;
     }
+
+
 
 
 }

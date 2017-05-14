@@ -102,7 +102,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="24dp"
         android:layout_below="@+id/title_bar"
-        android:src="@drawable/arrow"
+        app:srcCompat="@drawable/arrow"
         app:layout_anchor="@id/title_bar"
         app:layout_anchorGravity="bottom|right|end" />
 

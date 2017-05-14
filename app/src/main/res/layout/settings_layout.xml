@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reminder"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:id="@+id/reminder_title"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick up reminder"
+        android:layout_below="@+id/reminder_title"
+        android:id="@+id/reminder1"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently 1.0 km before pick up spot"
+        android:layout_below="@+id/reminder1"
+        android:id="@+id/reminder_content1"
+        android:layout_marginTop="3dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change"
+        android:layout_below="@+id/reminder_title"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drop Reminder"
+        android:id="@+id/reminder2"
+        android:layout_below="@+id/reminder_content1"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently 1.0 km before drop spot"
+        android:layout_below="@+id/reminder2"
+        android:id="@+id/reminder_content2"
+        android:layout_marginTop="3dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change"
+        android:layout_below="@+id/reminder_content1"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:textSize="15dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#999999"
+        android:layout_below="@+id/reminder_content2"
+        android:id="@+id/separator"
+        android:layout_marginTop="25dp">
+
+    </View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Notification Alert"
+        android:layout_below="@+id/separator"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:id="@+id/alert"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select all"
+        android:layout_below="@+id/separator"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:textSize="15dp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pickupbox"
+        android:layout_below="@+id/alert"
+        android:layout_marginTop="20dp"
+        android:checked="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick up notification"
+        android:layout_below="@+id/alert"
+        android:layout_toRightOf="@+id/pickupbox"
+        android:id="@+id/pickupnotify"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="When bus reached at pickup reminder spot"
+        android:layout_below="@+id/pickupnotify"
+        android:layout_toRightOf="@+id/pickupbox"
+        android:id="@+id/content1"
+        android:layout_marginLeft="20dp" />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/content1"
+        android:id="@+id/dropbox"
+        android:layout_marginTop="25dp"
+        android:checked="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drop notification"
+        android:id="@+id/dropnotify"
+        android:layout_below="@+id/content1"
+        android:layout_toRightOf="@+id/dropbox"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="When bus reached at drop reminder spot"
+        android:layout_below="@+id/dropnotify"
+        android:layout_toRightOf="@+id/dropbox"
+        android:id="@+id/content2"
+        android:layout_marginLeft="20dp"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/content2"
+        android:id="@+id/reachedbox"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reached at School"
+        android:id="@+id/rechednotify"
+        android:layout_below="@+id/content2"
+        android:layout_toRightOf="@+id/reachedbox"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hangouts video call"
+        android:id="@+id/content3"
+        android:layout_below="@+id/rechednotify"
+        android:layout_toRightOf="@+id/reachedbox"
+        android:layout_marginLeft="20dp"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/leftbox"
+        android:layout_below="@+id/content3"
+        android:layout_marginTop="25dp"
+        android:checked="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left from School"
+        android:id="@+id/leftnotify"
+        android:layout_below="@+id/content3"
+        android:layout_toRightOf="@+id/leftbox"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Also notify when receiving invites"
+        android:layout_below="@+id/leftnotify"
+        android:layout_toRightOf="@+id/leftbox"
+        android:layout_marginLeft="20dp"/>
+
+
+</RelativeLayout>
