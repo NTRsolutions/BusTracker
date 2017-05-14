@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
 
                 else if(navItemIndex==1)
 
-                    startActivity(new Intent(MainActivity.this,LocationActivity.class));
+                    startActivity(new Intent(MainActivity.this,profileActivity.class));
 
                 else
 
