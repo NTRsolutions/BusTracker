@@ -25,13 +25,9 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:text="Pick up"
                 android:textAllCaps="false"
                 android:id="@+id/pick_up"
-                android:drawableLeft="@drawable/ic_location_on_orange_24dp"
-                android:background="@drawable/pickup_bkgrnd"
-                android:textColor="@color/colorPrimary"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:paddingRight="15dp"
@@ -41,32 +37,28 @@
                 android:minWidth="130dp"
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
-                style="?android:attr/borderlessButtonStyle"
+                style="@style/MyButtonStyle1"
                 />
 
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:text="Drop"
                 android:textAllCaps="false"
                 android:id="@+id/drop"
-                android:drawableLeft="@drawable/ic_location_on_orang_24dp"
-                android:background="@drawable/drop_bkgrnd"
                 android:drawablePadding="-12dp"
-                android:gravity="center"
                 android:layout_marginRight="30dp"
                 android:layout_alignParentRight="true"
-                android:paddingRight="15dp"
-                android:paddingLeft="15dp"
+                android:paddingRight="25dp"
+                android:paddingLeft="25dp"
                 android:minHeight="30dp"
                 android:layout_centerVertical="true"
                 android:minWidth="130dp"
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
                 android:layout_marginBottom="15dp"
-                style="?android:attr/borderlessButtonStyle"
+                style="@style/MyButtonStyle2"
                 />
 
         </RelativeLayout>

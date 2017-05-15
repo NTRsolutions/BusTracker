@@ -12,10 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.gms.maps.MapFragment;
 import com.project.verbosetech.bustracker.Fragments.DropFragment;
 import com.project.verbosetech.bustracker.Fragments.PIckUpFragment;
 import com.project.verbosetech.bustracker.R;
+
+import static com.project.verbosetech.bustracker.R.drawable.drop_bkgrnd;
+import static com.project.verbosetech.bustracker.R.drawable.pickup_bkgrnd;
 
 
 /**
@@ -25,7 +27,6 @@ import com.project.verbosetech.bustracker.R;
 public class LocationActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    private MapFragment googleMap;
     Button pickup,drop;
 
 
@@ -42,10 +43,23 @@ public class LocationActivity extends AppCompatActivity {
         pickup=(Button)findViewById(R.id.pick_up);
         drop=(Button)findViewById(R.id.drop);
 
+        Fragment fragment = new PIckUpFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                android.R.anim.fade_out);
+        fragmentTransaction.replace(R.id.frame_location, fragment);
+        fragmentTransaction.commitAllowingStateLoss();
+
         pickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orange_24dp, 0, 0, 0);
+                pickup.setTextColor(getResources().getColor(R.color.colorPrimary));
+                pickup.setBackground(getResources().getDrawable(pickup_bkgrnd));
+                drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orang_24dp, 0, 0, 0);
+                drop.setTextColor(getResources().getColor(R.color.splashTitle));
+                drop.setBackground(getResources().getDrawable(drop_bkgrnd));
                 Fragment fragment = new PIckUpFragment();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -60,6 +74,12 @@ public class LocationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orange_24dp, 0, 0, 0);
+                drop.setTextColor(getResources().getColor(R.color.colorPrimary));
+                drop.setBackground(getResources().getDrawable(pickup_bkgrnd));
+                pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orang_24dp, 0, 0, 0);
+                pickup.setTextColor(getResources().getColor(R.color.splashTitle));
+                pickup.setBackground(getResources().getDrawable(drop_bkgrnd));
                 Fragment fragment = new DropFragment();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -69,14 +89,6 @@ public class LocationActivity extends AppCompatActivity {
 
             }
         });
-
-//        try {
-//            // Loading map
-//            initilizeMap();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,19 +100,6 @@ public class LocationActivity extends AppCompatActivity {
         });
     }
 
-//    private void initilizeMap() {
-//        if (googleMap == null) {
-//            googleMap = ((MapFragment) getFragmentManager().findFragmentById(
-//                    R.id.map));
-//
-//            // check if map is created successfully or not
-//            if (googleMap == null) {
-//                Toast.makeText(getApplicationContext(),
-//                        "Sorry! unable to create maps", Toast.LENGTH_SHORT)
-//                        .show();
-//            }
-//        }
-//    }
     @Override
     protected void onResume() {
         super.onResume();
