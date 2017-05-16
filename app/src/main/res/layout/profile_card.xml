@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/img_profile"
                 android:scaleType="fitXY"
+                android:layout_margin="5dp"
                 />
 
             <TextView

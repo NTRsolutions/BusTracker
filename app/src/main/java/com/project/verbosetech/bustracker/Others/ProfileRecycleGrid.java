@@ -77,8 +77,8 @@ public class ProfileRecycleGrid extends RecyclerView.Adapter<ProfileRecycleGrid.
         Glide.with(context).load(dataSet.get(position).getImage())
                 .centerCrop()
                 .crossFade()
-                .thumbnail(0.3f)
-                .override(720,720)
+                .thumbnail(0.5f)
+                .override(150,150)
                 .bitmapTransform(new CircleTransform(context))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(profile_image);
