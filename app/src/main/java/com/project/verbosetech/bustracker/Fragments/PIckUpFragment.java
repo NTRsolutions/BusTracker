@@ -16,8 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -58,6 +60,8 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
 
     FrameLayout fm;
 
+    Button continuee;
+
     public PIckUpFragment() {
         // Required empty public constructor
     }
@@ -75,6 +79,14 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
         textView = (DelayAutoCompleteTextView) view.findViewById(R.id.geo_autocomplete);
         gps_search = (ImageView) view.findViewById(R.id.gps_search);
         fm=(FrameLayout)view.findViewById(R.id.main_layout);
+        continuee=(Button)view.findViewById(R.id.continuee);
+        continuee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(getActivity(),"To be implemented",Toast.LENGTH_LONG).show();
+            }
+        });
 
 //      geo_autocomplete_clear = (ImageView) view.findViewById(R.id.geo_autocomplete_clear);
         geo_autocomplete = (DelayAutoCompleteTextView) view.findViewById(R.id.geo_autocomplete);

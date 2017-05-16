@@ -222,19 +222,32 @@ public class MainActivity extends AppCompatActivity {
 
                 if(navItemIndex==5)
 
+                {
                     startActivity(new Intent(MainActivity.this,ContactActivity.class));
+                    finish();
+                }
 
                 else if(navItemIndex==4)
 
+                {
                     startActivity(new Intent(MainActivity.this,AboutSchoolActivity.class));
+                    finish();
+                }
+
 
                 else if(navItemIndex==2)
 
+                {
                     startActivity(new Intent(MainActivity.this,LocationActivity.class));
+                    finish();
+                }
 
                 else if(navItemIndex==1)
 
+                {
                     startActivity(new Intent(MainActivity.this,profileActivity.class));
+                    finish();
+                }
 
                 else
 
