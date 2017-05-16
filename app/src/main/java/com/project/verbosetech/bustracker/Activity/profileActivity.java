@@ -3,14 +3,18 @@ package com.project.verbosetech.bustracker.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.project.verbosetech.bustracker.Models.Profile;
@@ -33,6 +37,9 @@ public class profileActivity extends AppCompatActivity {
     ProfileRecycleGrid adapter;
     RecyclerView recyclerView;
     List<Profile> profileList;
+    ImageView add;
+    AlertDialog alertDialog;
+
 
     private static final String urlProfileImg = "https://c.tadst.com/gfx/750w/fatherson.jpg?1";
 
@@ -47,6 +54,7 @@ public class profileActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white_24dp);
         setSupportActionBar(toolbar);
         profile_image=(ImageView)findViewById(R.id.img_profile);
+        add=(ImageView)findViewById(R.id.add);
 
         recyclerView=(RecyclerView)findViewById(R.id.profile_grid);
         recyclerView.setHasFixedSize(true);
@@ -60,6 +68,30 @@ public class profileActivity extends AppCompatActivity {
 
                 startActivity(new Intent(profileActivity.this,MainActivity.class));
                 finish();
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                LayoutInflater li = LayoutInflater.from(profileActivity.this);
+                View promptsView = li.inflate(R.layout.profile_new_dialog_layout, null);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(profileActivity.this,R.style.MyTransparentDialog);
+                alertDialogBuilder.setView(promptsView);
+                alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+                alertDialog.getWindow().setGravity(Gravity.LEFT|Gravity.BOTTOM);
+                WindowManager.LayoutParams layoutParams = alertDialog.getWindow().getAttributes();
+                layoutParams.x = -200; // left margin
+                layoutParams.y = 500; // bottom margin
+                alertDialog.getWindow().setAttributes(layoutParams);
+                alertDialog.getWindow().setLayout(1100,1000);
+
+
+
+
             }
         });
 
