@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layout1"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reminder1"
+            android:id="@+id/reminder1"
+            android:gravity="right"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8:00 am"
+            android:layout_below="@+id/reminder1"
+            android:id="@+id/time1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10:00pm"
+            android:layout_below="@+id/time1"
+            android:id="@+id/time2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3:00pm"
+            android:layout_below="@+id/time2"
+            android:id="@+id/time3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reminder2"
+            android:layout_below="@+id/time3"
+            android:id="@+id/reminder2"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5:00pm"
+            android:layout_below="@+id/reminder2"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout2"
+        android:orientation="vertical"
+        android:layout_toLeftOf="@+id/layout3"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reminder_icon"
+            android:layout_below="@+id/toolbar"
+            app:srcCompat="@drawable/ic_notifications_black_24dp"
+            />
+        <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#000"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_below="@+id/reminder_icon"-->
+        <!--android:id="@+id/line"-->
+        <!--&gt;-->
+        <!--</View>-->
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@drawable/ic_location_on_black_24dp"-->
+        <!--android:layout_below="@+id/reminder_icon"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:id="@+id/location_icon"-->
+        <!--android:background="@color/splashTitle"/>-->
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@drawable/ic_location_city_black_24dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:background="@color/splashTitle"-->
+        <!--/>-->
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@drawable/ic_notifications_black_24dp"-->
+        <!--android:layout_above="@+id/location_icon2"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:background="@color/splashTitle"-->
+        <!--/>-->
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@drawable/ic_location_on_black_24dp"-->
+        <!--android:layout_below="@+id/line"-->
+        <!--android:id="@+id/location_icon2"-->
+        <!--android:layout_centerHorizontal="true"/>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        android:id="@+id/layout3">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Old Street Circle,New Delhi."
+        android:layout_toRightOf="@+id/reminder_icon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick up"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shivaji Park,New Delhi"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="St. Xavier's High School"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OLd Street Circle ,New Delhi"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shivaji Park,New Delhi"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
