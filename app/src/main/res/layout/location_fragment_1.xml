@@ -79,7 +79,7 @@
 
 
     <Button
-        android:id="@+id/bSearch"
+        android:id="@+id/pickup_reminder"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="16dp"

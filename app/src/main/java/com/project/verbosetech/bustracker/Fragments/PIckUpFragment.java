@@ -60,7 +60,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
 
     FrameLayout fm;
 
-    Button continuee;
+    Button continuee,setReminder;
 
     public PIckUpFragment() {
         // Required empty public constructor
@@ -80,11 +80,20 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
         gps_search = (ImageView) view.findViewById(R.id.gps_search);
         fm=(FrameLayout)view.findViewById(R.id.main_layout);
         continuee=(Button)view.findViewById(R.id.continuee);
+        setReminder=(Button)view.findViewById(R.id.pickup_reminder);
         continuee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Toast.makeText(getActivity(),"To be implemented",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        setReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
             }
         });
 

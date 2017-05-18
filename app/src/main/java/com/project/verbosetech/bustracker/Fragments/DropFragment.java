@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.project.verbosetech.bustracker.R;
 
@@ -13,6 +14,9 @@ import com.project.verbosetech.bustracker.R;
  */
 
 public class DropFragment extends Fragment {
+
+    private View view;
+    Button setReminder;
 
     public DropFragment() {
         // Required empty public constructor
@@ -27,8 +31,17 @@ public class DropFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.location_fragment_2, container, false);
+        view= inflater.inflate(R.layout.location_fragment_2, container, false);
+        setReminder=(Button)view.findViewById(R.id.drop_reminder);
+        setReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+
+            }
+        });
+
+        return view;
 
     }
 }
