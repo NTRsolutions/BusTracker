@@ -101,23 +101,25 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
-        android:orientation="vertical"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:background="#ad7123"
-        android:layout_below="@+id/bar_layout">
+        android:layout_below="@+id/bar_layout"
+        android:weightSum="100">
 
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/layout1"
             android:layout_toLeftOf="@+id/layout2"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
+            android:layout_weight="25"
             >
 
             <TextView
@@ -181,12 +183,14 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/layout2"
             android:orientation="vertical"
             android:layout_toLeftOf="@+id/layout3"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="10"
+            android:gravity="center_horizontal"
             >
 
             <ImageView
@@ -267,13 +271,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_alignParentRight="true"
             android:id="@+id/layout3"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="5dp"
+            android:layout_weight="65">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -343,7 +347,7 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 

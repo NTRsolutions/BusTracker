@@ -82,10 +82,11 @@ public class Calender_Fragment extends Fragment {
                 .dayNumberFormat("dd")    // Date format
                 .monthFormat("MMM") 	  // Month format
                 .showDayName(true)	  // Show or Hide dayName text
-                .showMonthName(true)	  // Show or Hide month text
+                .showMonthName(false)	  // Show or Hide month text
                 .textColor(Color.DKGRAY, Color.BLACK)    // Text color for none selected Dates, Text color for selected Date.
                 .selectedDateBackground(Color.TRANSPARENT)  // Background color of the selected date cell.
                 .selectorColor(Color.WHITE)// Color of the selection indicator bar (default to colorAccent).
+                .textSizeDayNumber(15.0f)
                 .build();
 
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
