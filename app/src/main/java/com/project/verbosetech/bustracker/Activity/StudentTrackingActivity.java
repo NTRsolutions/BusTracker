@@ -2,8 +2,10 @@ package com.project.verbosetech.bustracker.Activity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -60,7 +62,15 @@ public class StudentTrackingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(StudentTrackingActivity.this,ViewInMapActivity.class));
+                Intent intent = new Intent(StudentTrackingActivity.this, ViewInMapActivity.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation(StudentTrackingActivity.this, student_image, getString(R.string.activity_image_trans));
+                    startActivity(intent, options.toBundle());
+                }
+                else {
+                    startActivity(intent);
+                }
             }
         });
 

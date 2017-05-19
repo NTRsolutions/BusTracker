@@ -40,12 +40,13 @@ public class ViewInMapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_in_map_layout);
+        pref = new PrefManager(getApplicationContext());
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(pref.getName());
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white_24dp);
         setSupportActionBar(toolbar);
-        student_image = (ImageView) findViewById(R.id.image);
+        student_image = (ImageView) findViewById(R.id.student_image);
 
         Glide.with(getApplicationContext()).load(image_address)
                 .centerCrop()
