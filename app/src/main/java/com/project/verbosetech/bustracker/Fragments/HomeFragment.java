@@ -1,5 +1,6 @@
 package com.project.verbosetech.bustracker.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -8,9 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.project.verbosetech.bustracker.Activity.StudentTrackingActivity;
 import com.project.verbosetech.bustracker.Models.Student;
 import com.project.verbosetech.bustracker.Others.HomeRecycleGrid;
+import com.project.verbosetech.bustracker.Others.PrefManager;
 import com.project.verbosetech.bustracker.R;
 
 import java.util.ArrayList;
@@ -27,6 +31,7 @@ public class HomeFragment extends Fragment {
     HomeRecycleGrid adapter;
     RecyclerView recyclerView;
     List<Student> studentList;
+    PrefManager pref;
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class HomeFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        pref=new PrefManager(getActivity());
 
         getInformation();
         return view;
@@ -52,8 +58,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onCardClick(String p) {
 
-                //Task when card will be clicked
-
+                Toast.makeText(getActivity(),p+"", Toast.LENGTH_LONG).show();
+                pref.setName(p);
+                startActivity(new Intent(getActivity(), StudentTrackingActivity.class));
             }
         });
 

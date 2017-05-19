@@ -58,12 +58,19 @@ public class PrefManager {
         editor.commit();
     }
 
+    public void setName(String name) {
 
-
+        editor.putString("name", name);
+        editor.commit();
+    }
 
 
     public String getNotifyStatus() {
         return pref.getString("status", null);
+    }
+
+    public String getName() {
+        return pref.getString("name", null);
     }
 
 

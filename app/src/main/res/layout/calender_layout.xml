@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar_layout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/layout"
+        android:gravity="center"
+        android:background="@color/colorPrimary">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp"
+        android:layout_marginRight="30dp"
+        android:id="@+id/decrease_month"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="December "
+        android:gravity="center_vertical"
+        android:textColor="@color/splashTitle"
+        android:id="@+id/month"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=","
+        android:gravity="center_vertical"
+        android:textColor="@color/splashTitle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text=" 2016"
+        android:gravity="center_vertical"
+        android:textColor="@color/splashTitle"
+        android:id="@+id/year"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/increase_month"/>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/layout"
+        android:id="@+id/left_arrow"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp"
+        android:background="@color/colorPrimary"
+        android:layout_alignBottom="@+id/calendarView"
+        />
+
+
+
+    <devs.mulham.horizontalcalendar.HorizontalCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:textColorSelected="#FFFF"
+        android:layout_below="@+id/layout"
+        android:layout_toRightOf="@+id/left_arrow"
+        android:layout_toLeftOf="@+id/right_arrow"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/layout"
+        android:id="@+id/right_arrow"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp"
+        android:background="@color/colorPrimary"
+        android:layout_alignBottom="@+id/calendarView"
+
+        />
+        </RelativeLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="#ad7123"
+        android:layout_below="@+id/bar_layout">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/layout1"
+            android:layout_toLeftOf="@+id/layout2"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reminder1"
+                android:id="@+id/reminder1"
+                android:gravity="right"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8:00am"
+                android:layout_below="@+id/reminder1"
+                android:id="@+id/time1"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:00pm"
+                android:layout_below="@+id/time1"
+                android:id="@+id/time2"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3:00pm"
+                android:layout_below="@+id/time2"
+                android:id="@+id/time3"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reminder2"
+                android:layout_below="@+id/time3"
+                android:id="@+id/reminder2"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="30dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5:00pm"
+                android:layout_below="@+id/reminder2"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout2"
+            android:orientation="vertical"
+            android:layout_toLeftOf="@+id/layout3"
+            android:layout_marginRight="20dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/reminder_icon"
+                android:layout_below="@+id/toolbar"
+                app:srcCompat="@drawable/ic_notifications_black_24dp"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="15dp"
+                android:background="#000"
+                android:id="@+id/line"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="-5dp"
+                android:layout_marginTop="-5dp">
+            </View>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_location_on_black_24dp"
+                android:id="@+id/location_icon2" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                android:background="#000"
+                android:id="@+id/line2"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="-5dp"
+                android:layout_marginTop="-5dp">
+            </View>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_location_on_black_24dp"
+                android:id="@+id/school_icon3" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                android:background="#000"
+                android:id="@+id/line3"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="-5dp"
+                android:layout_marginTop="-5dp">
+            </View>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/reminder_icon2"
+                android:layout_below="@+id/toolbar"
+                app:srcCompat="@drawable/ic_notifications_black_24dp"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="15dp"
+                android:background="#000"
+                android:id="@+id/line4"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="-5dp"
+                android:layout_marginTop="-5dp">
+            </View>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_location_on_black_24dp"
+                android:id="@+id/location_icon3"
+
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true"
+            android:id="@+id/layout3"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Old Street Circle,New Delhi."
+                android:layout_toRightOf="@+id/reminder_icon"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick up"
+                    android:textStyle="bold"
+                    android:textColor="@color/splashTitle"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shivaji Park,New Delhi"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="St. Xavier's High School"
+                android:layout_marginTop="48dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OLd Street Circle ,New Delhi"
+                android:layout_marginTop="50dp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Drop"
+                    android:textColor="@color/splashTitle"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shivaji Park,New Delhi"
+                    android:layout_marginLeft="15dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

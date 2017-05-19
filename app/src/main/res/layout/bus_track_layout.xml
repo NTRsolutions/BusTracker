@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="@color/colorPrimary">
 
 
     <RelativeLayout
@@ -11,6 +12,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/layout1"
+        android:layout_toLeftOf="@+id/layout2"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
         >
 
         <TextView
@@ -18,29 +22,38 @@
             android:layout_height="wrap_content"
             android:text="Reminder1"
             android:id="@+id/reminder1"
-            android:gravity="right"/>
+            android:gravity="right"
+            android:layout_alignParentRight="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="8:00 am"
+            android:text="8:00am"
             android:layout_below="@+id/reminder1"
             android:id="@+id/time1"
-            />
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10:00pm"
             android:layout_below="@+id/time1"
-            android:id="@+id/time2"/>
+            android:id="@+id/time2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3:00pm"
             android:layout_below="@+id/time2"
-            android:id="@+id/time3"/>
+            android:id="@+id/time3"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,6 +61,8 @@
             android:text="Reminder2"
             android:layout_below="@+id/time3"
             android:id="@+id/reminder2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="30dp"
             />
 
         <TextView
@@ -55,6 +70,9 @@
             android:layout_height="wrap_content"
             android:text="5:00pm"
             android:layout_below="@+id/reminder2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
             />
 
     </RelativeLayout>
@@ -65,6 +83,7 @@
         android:id="@+id/layout2"
         android:orientation="vertical"
         android:layout_toLeftOf="@+id/layout3"
+        android:layout_marginRight="20dp"
         >
 
         <ImageView
@@ -74,46 +93,73 @@
             android:layout_below="@+id/toolbar"
             app:srcCompat="@drawable/ic_notifications_black_24dp"
             />
-        <!--<View-->
-        <!--android:layout_width="1dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="#000"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_below="@+id/reminder_icon"-->
-        <!--android:id="@+id/line"-->
-        <!--&gt;-->
-        <!--</View>-->
-        <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:srcCompat="@drawable/ic_location_on_black_24dp"-->
-        <!--android:layout_below="@+id/reminder_icon"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="15dp"-->
-        <!--android:id="@+id/location_icon"-->
-        <!--android:background="@color/splashTitle"/>-->
-        <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:srcCompat="@drawable/ic_location_city_black_24dp"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:background="@color/splashTitle"-->
-        <!--/>-->
-        <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:srcCompat="@drawable/ic_notifications_black_24dp"-->
-        <!--android:layout_above="@+id/location_icon2"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:background="@color/splashTitle"-->
-        <!--/>-->
-        <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:srcCompat="@drawable/ic_location_on_black_24dp"-->
-        <!--android:layout_below="@+id/line"-->
-        <!--android:id="@+id/location_icon2"-->
-        <!--android:layout_centerHorizontal="true"/>-->
+        <View
+        android:layout_width="1dp"
+        android:layout_height="15dp"
+        android:background="#000"
+        android:id="@+id/line"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="-5dp"
+            android:layout_marginTop="-5dp">
+        </View>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_location_on_black_24dp"
+            android:id="@+id/location_icon2" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="#000"
+            android:id="@+id/line2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="-5dp"
+            android:layout_marginTop="-5dp">
+        </View>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_location_on_black_24dp"
+            android:id="@+id/school_icon3" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="#000"
+            android:id="@+id/line3"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="-5dp"
+            android:layout_marginTop="-5dp">
+        </View>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reminder_icon2"
+            android:layout_below="@+id/toolbar"
+            app:srcCompat="@drawable/ic_notifications_black_24dp"
+            />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="15dp"
+            android:background="#000"
+            android:id="@+id/line4"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="-5dp"
+            android:layout_marginTop="-5dp">
+        </View>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_location_on_black_24dp"
+            android:id="@+id/location_icon3"
+
+
+            />
 
     </LinearLayout>
 
@@ -122,43 +168,75 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentRight="true"
-        android:id="@+id/layout3">
+        android:id="@+id/layout3"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="5dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Old Street Circle,New Delhi."
-        android:layout_toRightOf="@+id/reminder_icon"/>
+        android:layout_toRightOf="@+id/reminder_icon"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pick up"/>
+        android:text="Pick up"
+        android:textStyle="bold"
+        android:textColor="@color/splashTitle"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shivaji Park,New Delhi"/>
+        android:text="Shivaji Park,New Delhi"
+        android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="St. Xavier's High School"/>
+        android:text="St. Xavier's High School"
+        android:layout_marginTop="48dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OLd Street Circle ,New Delhi"/>
+        android:text="OLd Street Circle ,New Delhi"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Drop"/>
+        android:text="Drop"
+        android:textColor="@color/splashTitle"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shivaji Park,New Delhi"/>
+        android:text="Shivaji Park,New Delhi"
+        android:layout_marginLeft="15dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

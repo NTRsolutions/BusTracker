@@ -59,7 +59,7 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
     }
 
     @Override
-    public void onBindViewHolder(MyHolder holder, int position) {
+    public void onBindViewHolder(MyHolder holder, final int position) {
 
         TextView name = holder.name;
         TextView class_sec = holder.class_section;
@@ -77,7 +77,8 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                venueAdapterClickCallbacks.onCardClick(dataSet.get(position).url);
+
+                venueAdapterClickCallbacks.onCardClick(dataSet.get(position).getName());
 
             }
         });

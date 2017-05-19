@@ -43,6 +43,7 @@
         <activity android:name=".Activity.MainActivity"></activity>
         <activity android:name=".Activity.LocationActivity"></activity>
         <activity android:name=".Activity.profileActivity"></activity>
+        <activity android:name=".Activity.StudentTrackingActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
