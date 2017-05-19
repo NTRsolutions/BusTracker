@@ -43,6 +43,7 @@
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:layout_toLeftOf="@+id/student_image"
+        android:id="@+id/view_in_map"
 
         />
 

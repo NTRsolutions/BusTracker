@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar8">
+
+    </include>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar8"
+        android:layout_marginTop="55dp"/>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/splashTitle"
+        android:layout_gravity="bottom"
+        android:id="@+id/name_image_layout"
+        android:layout_marginBottom="48dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:orientation="horizontal"
+            android:id="@+id/name_layout"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="145dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:text="Sachin Parekh"
+            android:layout_weight="65"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:textColor="#000"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/circle"
+            android:id="@+id/circle"
+            android:layout_weight="5"
+            android:layout_gravity="center_vertical"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="In Bus"
+            android:id="@+id/status"
+            android:layout_weight="25"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="3dp"
+            android:textSize="12dp"/>
+
+        </LinearLayout>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/class_section"
+            android:text="Class 10th B Division"
+            android:layout_below="@+id/name_layout"
+            android:textSize="13dp"
+            android:layout_marginLeft="145dp"/>
+
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tab_host"
+        android:layout_gravity="bottom"
+        android:background="@color/splashTitle"
+        app:tabGravity="center"
+        >
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_below="@+id/tab_host"
+        android:visibility="gone"
+        android:layout_gravity="bottom"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image"
+        android:src="@drawable/image_bckgrnd"
+        app:layout_anchor="@+id/name_image_layout"
+        android:layout_marginLeft="20dp"
+        />
+
+</android.support.design.widget.CoordinatorLayout>
