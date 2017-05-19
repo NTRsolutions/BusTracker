@@ -15,6 +15,7 @@
         android:layout_toLeftOf="@+id/layout2"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
+        android:layout_alignParentLeft="true"
         >
 
         <TextView
@@ -169,13 +170,13 @@
         android:orientation="vertical"
         android:layout_alignParentRight="true"
         android:id="@+id/layout3"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="5dp"
         android:layout_marginTop="5dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Old Street Circle,New Delhi."
+        android:text="Old Street Circle,New Delhi"
         android:layout_toRightOf="@+id/reminder_icon"
         android:textStyle="bold"/>
 

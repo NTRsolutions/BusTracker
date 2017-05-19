@@ -18,9 +18,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.project.verbosetech.bustracker.Fragments.Calender_Fragment;
 import com.project.verbosetech.bustracker.Fragments.HomeFragment;
 import com.project.verbosetech.bustracker.Fragments.NotificationsFragment;
+import com.project.verbosetech.bustracker.Fragments.SettingsFragment;
 import com.project.verbosetech.bustracker.Others.PrefManager;
 import com.project.verbosetech.bustracker.R;
 
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 HomeFragment homeFragment = new HomeFragment();
                 return homeFragment;
             case 3:
-                Calender_Fragment settingsFragment = new Calender_Fragment();
+                SettingsFragment settingsFragment = new SettingsFragment();
                 return settingsFragment;
 
             default:

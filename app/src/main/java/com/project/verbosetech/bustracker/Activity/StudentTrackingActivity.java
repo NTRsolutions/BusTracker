@@ -59,7 +59,7 @@ public class StudentTrackingActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tab_host);
         tabLayout.setupWithViewPager(viewPager);
-        createTabIcons();
+        setupTabIcons();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,8 +137,14 @@ public class StudentTrackingActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+            return null;
         }
+    }
+
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_orange_24dp);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_grey_24dp);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_grey_24dp);
     }
 }
 
