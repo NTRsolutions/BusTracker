@@ -1,14 +1,19 @@
 package com.project.verbosetech.bustracker.Activity;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -47,6 +52,36 @@ public class ViewInMapActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white_24dp);
         setSupportActionBar(toolbar);
         student_image = (ImageView) findViewById(R.id.student_image);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ViewInMapActivity.this, StudentTrackingActivity.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+                    View student_image  = findViewById(R.id.student_image);
+                    View status = findViewById(R.id.status);
+                    View name=findViewById(R.id.student_name);
+                    View class_sec=findViewById(R.id.class_section);
+                    View tab_host=findViewById(R.id.tab_host);
+
+                    Pair<View, String> pair1 = Pair.create(student_image, student_image.getTransitionName());
+                    Pair<View, String> pair2 = Pair.create(name, name.getTransitionName());
+                    Pair<View, String> pair3 = Pair.create(status, status.getTransitionName());
+                    Pair<View, String> pair4 = Pair.create(class_sec, class_sec.getTransitionName());
+                    Pair<View, String> pair5 = Pair.create(tab_host, tab_host.getTransitionName());
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation(ViewInMapActivity.this, pair1, pair2, pair3,pair4,pair5);
+                    startActivity(intent, options.toBundle());
+                }
+                else {
+                    startActivity(intent);
+                }
+                finish();
+            }
+        });
 
         Glide.with(getApplicationContext()).load(image_address)
                 .centerCrop()

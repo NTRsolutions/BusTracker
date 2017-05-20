@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.project.verbosetech.bustracker.Fragments.BusTrackFragment;
 import com.project.verbosetech.bustracker.Fragments.Calender_Fragment;
 import com.project.verbosetech.bustracker.Fragments.ContactsFragment;
@@ -42,8 +44,8 @@ public class StudentTrackingActivity extends AppCompatActivity {
     ImageView student_image;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    TextView viewInMap;
-
+    TextView viewInMap,name,class_sec,status;
+    SupportMapFragment map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,10 @@ public class StudentTrackingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         student_image = (ImageView) findViewById(R.id.student_image);
         viewInMap=(TextView)findViewById(R.id.view_in_map);
+        name=(TextView)findViewById(R.id.student_name);
+        class_sec=(TextView)findViewById(R.id.class_section);
+        status=(TextView)findViewById(R.id.status);
+
 
         viewInMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +70,21 @@ public class StudentTrackingActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(StudentTrackingActivity.this, ViewInMapActivity.class);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+                    View student_image  = findViewById(R.id.student_image);
+                    View status = findViewById(R.id.status);
+                    View name=findViewById(R.id.student_name);
+                    View class_sec=findViewById(R.id.class_section);
+                    View tab_host=findViewById(R.id.tab_host);
+
+                    Pair<View, String> pair1 = Pair.create(student_image, student_image.getTransitionName());
+                    Pair<View, String> pair2 = Pair.create(name, name.getTransitionName());
+                    Pair<View, String> pair3 = Pair.create(status, status.getTransitionName());
+                    Pair<View, String> pair4 = Pair.create(class_sec, class_sec.getTransitionName());
+                    Pair<View, String> pair5 = Pair.create(tab_host, tab_host.getTransitionName());
+
                     ActivityOptionsCompat options = ActivityOptionsCompat.
-                            makeSceneTransitionAnimation(StudentTrackingActivity.this, student_image, getString(R.string.activity_image_trans));
+                            makeSceneTransitionAnimation(StudentTrackingActivity.this, pair1, pair2, pair3,pair4,pair5);
                     startActivity(intent, options.toBundle());
                 }
                 else {
