@@ -99,10 +99,10 @@
             app:srcCompat="@drawable/ic_notifications_black_24dp"
             />
         <View
-        android:layout_width="1dp"
-        android:layout_height="15dp"
-        android:background="#000"
-        android:id="@+id/line"
+            android:layout_width="1dp"
+            android:layout_height="15dp"
+            android:background="#000"
+            android:id="@+id/line"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="-5dp"
             android:layout_marginTop="-5dp">
@@ -178,49 +178,12 @@
         android:layout_weight="65"
         >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Old Street Circle,New Delhi"
-        android:layout_toRightOf="@+id/reminder_icon"
-        android:textStyle="bold"/>
-
-    <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pick up"
-        android:textStyle="bold"
-        android:textColor="@color/splashTitle"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Shivaji Park,New Delhi"
-        android:layout_marginLeft="10dp"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="St. Xavier's High School"
-        android:layout_marginTop="48dp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OLd Street Circle ,New Delhi"
-        android:layout_marginTop="45dp"
-        android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Old Street Circle,New Delhi"
+            android:layout_toRightOf="@+id/reminder_icon"
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -228,19 +191,56 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Drop"
-        android:textColor="@color/splashTitle"
-        android:textStyle="bold"
-        />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Shivaji Park,New Delhi"
-        android:layout_marginLeft="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pick up"
+                android:textStyle="bold"
+                android:textColor="@color/splashTitle"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shivaji Park,New Delhi"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="St. Xavier's High School"
+            android:layout_marginTop="48dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OLd Street Circle ,New Delhi"
+            android:layout_marginTop="45dp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drop"
+                android:textColor="@color/splashTitle"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shivaji Park,New Delhi"
+                android:layout_marginLeft="10dp"/>
 
         </LinearLayout>
 

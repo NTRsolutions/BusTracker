@@ -3,10 +3,10 @@
     package="com.project.verbosetech.bustracker">
 
     <permission
-        android:name="info.androidhive.googlemapsv2.permission.MAPS_RECEIVE"
+        android:name="com.project.verbosetech.bustracker.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="info.androidhive.googlemapsv2.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.project.verbosetech.bustracker.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
@@ -28,7 +28,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name="android.support.multidex.MultiDexApplication">
 
         <activity android:name=".Activity.SignInActivity">
             <intent-filter>
