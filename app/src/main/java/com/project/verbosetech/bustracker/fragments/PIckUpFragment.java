@@ -99,7 +99,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
 //      geo_autocomplete_clear = (ImageView) view.findViewById(R.id.geo_autocomplete_clear);
         geo_autocomplete = (DelayAutoCompleteTextView) view.findViewById(R.id.geo_autocomplete);
         geo_autocomplete.setThreshold(THRESHOLD);
-        geo_autocomplete.setAdapter(new GeoAutoCompleteAdapter(getActivity())); // 'this' is Activity instance
+        geo_autocomplete.setAdapter(new GeoAutoCompleteAdapter(getActivity())); // 'this' is activity instance
 
         geo_autocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

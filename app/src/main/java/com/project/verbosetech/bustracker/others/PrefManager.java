@@ -1,9 +1,8 @@
 package com.project.verbosetech.bustracker.others;
 
 /**
- * Created by this pc on 12-04-17.
+ * Created by this pc on 23-05-17.
  */
-
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -75,6 +74,4 @@ public class PrefManager {
 
 
 }
-
-
 

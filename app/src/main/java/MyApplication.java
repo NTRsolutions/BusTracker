@@ -6,7 +6,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.StandardExceptionParser;
 import com.google.android.gms.analytics.Tracker;
-import com.project.verbosetech.bustracker.Others.AnalyticsTrackers;
+import com.project.verbosetech.bustracker.others.AnalyticsTrackers;
 
 /**
  * Created by this pc on 21-05-17.

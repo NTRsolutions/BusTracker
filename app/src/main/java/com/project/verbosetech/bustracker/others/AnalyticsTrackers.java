@@ -1,4 +1,4 @@
-package com.project.verbosetech.bustracker.Others;
+package com.project.verbosetech.bustracker.others;
 
 import android.content.Context;
 
