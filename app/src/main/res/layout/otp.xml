@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -11,11 +11,10 @@
         android:fitsSystemWindows="true">
 
         <android.support.v7.widget.Toolbar
+            android:id="@+id/title_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/title_bar"
-            android:background="@color/colorPrimary"
-            >
+            android:background="@color/colorPrimary">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -25,26 +24,24 @@
                 >
 
                 <ImageView
+                    android:id="@+id/logo"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
-                    android:src="@drawable/logo"
-                    android:id="@+id/logo"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    />
+                    android:src="@drawable/logo" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SCHOOL BUS TRACKER"
-                    android:layout_toRightOf="@+id/logo"
                     android:layout_centerVertical="true"
-                    android:textColor="#fff"
-                    android:textSize="15dp"
-                    android:scaleY="1.3"
                     android:layout_marginLeft="20dp"
-                    />
+                    android:layout_toRightOf="@+id/logo"
+                    android:scaleY="1.3"
+                    android:text="SCHOOL BUS TRACKER"
+                    android:textColor="#fff"
+                    android:textSize="15dp" />
             </RelativeLayout>
 
         </android.support.v7.widget.Toolbar>
@@ -52,49 +49,48 @@
     </android.support.design.widget.AppBarLayout>
 
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_marginTop="28dp">
+        android:layout_marginTop="28dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/otext1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enter OTP we have sent you on above\n mentioned number"
-                android:gravity="center"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/otext1"/>
+                android:gravity="center"
+                android:text="Enter OTP we have sent you on above\n mentioned number" />
 
             <EditText
+                android:id="@+id/otp_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/otp_num"
                 android:layout_below="@+id/otext1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
                 android:background="@color/textBox"
                 android:hint="Enter OTP"
-                android:layout_marginTop="30dp"
-                android:layout_centerHorizontal="true"
-                android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:paddingLeft="40dp"
                 android:paddingRight="40dp"
-                android:textSize="15dp"/>
+                android:paddingTop="10dp"
+                android:textSize="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Resend"
                 android:layout_below="@+id/otp_num"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:text="Resend"
                 android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                android:layout_marginTop="25dp"/>
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -105,10 +101,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="24dp"
         android:layout_below="@+id/title_bar"
-        app:srcCompat="@drawable/arrow"
+        android:layout_marginRight="24dp"
         app:layout_anchor="@id/title_bar"
-        app:layout_anchorGravity="bottom|right|end" />
+        app:layout_anchorGravity="bottom|right|end"
+        app:srcCompat="@drawable/arrow" />
 
 </android.support.design.widget.CoordinatorLayout>

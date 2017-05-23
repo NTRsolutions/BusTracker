@@ -27,7 +27,7 @@
             android:layout_centerVertical="true"
             android:id="@+id/search"/>
 
-        <com.project.verbosetech.bustracker.Others.DelayAutoCompleteTextView
+        <com.project.verbosetech.bustracker.others.DelayAutoCompleteTextView
             android:id="@+id/geo_autocomplete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

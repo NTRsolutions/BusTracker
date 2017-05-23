@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <!-- Required to show current location -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -22,29 +22,47 @@
         android:required="true" />
 
     <application
+        android:name=".BusTrackerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name="android.support.multidex.MultiDexApplication">
+        android:theme="@style/AppTheme">
 
-        <activity android:name=".Activity.SignInActivity">
+        <activity
+            android:name=".activity.SignInActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activity.OtpActivity"></activity>
-        <activity android:name=".Activity.ContactActivity"></activity>
-        <activity android:name=".Activity.AboutSchoolActivity"></activity>
-        <activity android:name=".Activity.MainActivity"></activity>
-        <activity android:name=".Activity.LocationActivity"></activity>
-        <activity android:name=".Activity.profileActivity"></activity>
-        <activity android:name=".Activity.StudentTrackingActivity"></activity>
-        <activity android:name=".Activity.ViewInMapActivity"></activity>
+        <activity
+            android:name=".activity.OtpActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.ContactActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.AboutSchoolActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.LocationActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.profileActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.StudentTrackingActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".activity.ViewInMapActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
