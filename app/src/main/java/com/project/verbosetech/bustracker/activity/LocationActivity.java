@@ -12,9 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.fragments.DropFragment;
 import com.project.verbosetech.bustracker.fragments.PIckUpFragment;
-import com.project.verbosetech.bustracker.R;
 
 import static com.project.verbosetech.bustracker.R.drawable.drop_bkgrnd;
 import static com.project.verbosetech.bustracker.R.drawable.pickup_bkgrnd;
@@ -29,7 +29,6 @@ public class LocationActivity extends AppCompatActivity {
     Toolbar toolbar;
     Button pickup,drop;
 
-
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +39,7 @@ public class LocationActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white_24dp);
         setSupportActionBar(toolbar);
 
-        pickup=(Button)findViewById(R.id.pick_up);
-        drop=(Button)findViewById(R.id.drop);
+        intializeButtons();
 
         Fragment fragment = new PIckUpFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -116,4 +114,23 @@ public class LocationActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+
+    public void changeButton()
+    {
+//        Button pickup=(Button)findViewById(R.id.pick_up);
+//        Button drop=(Button)findViewById(R.id.drop);
+        drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orange_24dp, 0, 0, 0);
+        drop.setTextColor(getResources().getColor(R.color.colorPrimary));
+        drop.setBackground(getResources().getDrawable(pickup_bkgrnd));
+        pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orang_24dp, 0, 0, 0);
+        pickup.setTextColor(getResources().getColor(R.color.splashTitle));
+        pickup.setBackground(getResources().getDrawable(drop_bkgrnd));
+    }
+
+    public void intializeButtons(){
+
+        pickup=(Button)findViewById(R.id.pick_up);
+        drop=(Button)findViewById(R.id.drop);
+    }
+
 }

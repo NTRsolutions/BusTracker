@@ -1,12 +1,11 @@
 package com.project.verbosetech.bustracker.fragments;
 
 import android.content.Context;
+import android.content.IntentSender;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -21,21 +20,27 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.project.verbosetech.bustracker.R;
+import com.project.verbosetech.bustracker.activity.LocationActivity;
 import com.project.verbosetech.bustracker.others.DelayAutoCompleteTextView;
 import com.project.verbosetech.bustracker.others.GeoAutoCompleteAdapter;
 import com.project.verbosetech.bustracker.others.GeoSearchResult;
+import com.project.verbosetech.bustracker.others.GoogleMapsPath;
 
 import java.util.List;
 
@@ -43,7 +48,7 @@ import java.util.List;
  * Created by this pc on 14-05-17.
  */
 
-public class PIckUpFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class PIckUpFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,LocationListener {
 
     private View view;
     private GoogleMap Map;
@@ -61,8 +66,12 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
 
     FrameLayout fm;
 
-    Button continuee,setReminder;
+    Button continuee, setReminder;
     AlertDialog alertDialog;
+
+    private LocationRequest mLocationRequest;
+    private double currentLatitude;
+    private double currentLongitude;
 
     public PIckUpFragment() {
         // Required empty public constructor
@@ -79,13 +88,15 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
         view = inflater.inflate(R.layout.location_fragment_1, container, false);
         textView = (DelayAutoCompleteTextView) view.findViewById(R.id.geo_autocomplete);
         gps_search = (ImageView) view.findViewById(R.id.gps_search);
-        fm=(FrameLayout)view.findViewById(R.id.main_layout);
-        continuee=(Button)view.findViewById(R.id.continuee);
-        setReminder=(Button)view.findViewById(R.id.pickup_reminder);
+        fm = (FrameLayout) view.findViewById(R.id.main_layout);
+        continuee = (Button) view.findViewById(R.id.continuee);
+        setReminder = (Button) view.findViewById(R.id.pickup_reminder);
         continuee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                LocationActivity locationActivity = (LocationActivity) getActivity();
+                locationActivity.changeButton();
                 Fragment fragment = new DropFragment();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -101,7 +112,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
 
                 LayoutInflater li = LayoutInflater.from(getActivity());
                 View promptsView = li.inflate(R.layout.pickup_dialog, null);
-                Button skip=(Button) promptsView.findViewById(R.id.skip);
+                Button skip = (Button) promptsView.findViewById(R.id.skip);
                 skip.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -110,7 +121,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
                     }
                 });
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity(),R.style.MyDialogTheme);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
                 alertDialogBuilder.setView(promptsView);
                 alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
@@ -166,20 +177,19 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
                     search(Map, getLocationFromAddress(textView.getText().toString()));
                     Log.e("Addresssss", textView.getText().toString());
 
-                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,getLocationFromAddress(textView.getText().toString()),new LatLng(26.2520944,78.1794855));
+                    Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(fm.getWindowToken(), 0);
                 } else {
-                Map.setOnMyLocationChangeListener(myLocationChangeListener);
-                   myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
-                        @Override
-                        public void onMyLocationChange(Location location) {
-                            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-                            Map.addMarker(new MarkerOptions().position(loc));
-                            if(Map != null){
-                                Map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
-                            }
-                        }
-                    };
+                    Toast.makeText(getActivity(),currentLatitude+" ,"+currentLongitude,Toast.LENGTH_LONG).show();
+                    search(Map,new LatLng(currentLatitude,currentLongitude));
+
+                    GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,new LatLng(currentLatitude,currentLongitude),new LatLng(26.2520944,78.1794855));
+
+                    Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+
                 }
             }
         });
@@ -194,7 +204,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
 
         try {
 
-            mapFragment = (SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map);
+            mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
             if (mapFragment == null) {
                 mapFragment = SupportMapFragment.newInstance();
                 getChildFragmentManager().beginTransaction().replace(R.id.map, mapFragment).commit();
@@ -205,41 +215,54 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
 
                     Map = googleMap;
                     // Add a marker in Sydney, Australia, and move the camera.
+//                    if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                        // TODO: Consider calling
+//                        //    ActivityCompat#requestPermissions
+//                        // here to request the missing permissions, and then overriding
+//                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//                        //                                          int[] grantResults)
+//                        // to handle the case where the user grants the permission. See the documentation
+//                        // for ActivityCompat#requestPermissions for more details.
+//                        return;
+//                    }
+//                    Map.setMyLocationEnabled(true);
+//                    View mapView = mapFragment.getView();
+//                    if (mapView != null &&
+//                            mapView.findViewById(1) != null) {
+//                        // Get the button view
+//                        View locationButton = ((View) mapView.findViewById(1).getParent()).findViewById(2);
+//                        // and next place it, on bottom right (as Google Maps app)
+//                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
+//                                locationButton.getLayoutParams();
+//                        // position on right bottom
+//                        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
+//                        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+//                        layoutParams.setMargins(0,0,0,0);
+//                    }
+
                     search(Map,MOUNTAIN_VIEW);
+
 
                 }
             });
 
-            //Initializing googleApiClient
             googleApiClient = new GoogleApiClient.Builder(getActivity())
+                    // The next two lines tell the new client that “this” current class will handle connection stuff
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
+                    //fourth line adds the LocationServices API endpoint from GooglePlayServices
                     .addApi(LocationServices.API)
                     .build();
-            googleApiClient.connect();
+
+            // Create the LocationRequest object
+            mLocationRequest = LocationRequest.create()
+                    .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                    .setInterval(10 * 1000)        // 10 seconds, in milliseconds
+                    .setFastestInterval(1 * 1000); // 1 second, in milliseconds
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-//        if (Map == null) {
-//            mapFragment.getMapAsync(new OnMapReadyCallback() {
-//                @Override
-//                public void onMapReady(GoogleMap googleMap) {
-//
-//                    Map = googleMap;
-//                    // Add a marker in Sydney, Australia, and move the camera.
-//
-//                    LatLng sydney = new LatLng(-34, 151);
-//                    Map.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//                    Map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-//                }
-//            });
-//        }
     }
 
     public void search(GoogleMap googleMap,LatLng latLng){
@@ -250,10 +273,10 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
         Map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
         // Zoom in, animating the camera.
-        Map.animateCamera(CameraUpdateFactory.zoomIn());
+        Map.animateCamera( CameraUpdateFactory.zoomTo( 17.0f ) );
 
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
-        Map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+//        Map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 
         // Construct a CameraPosition focusing on Mountain View and animate the camera to that position.
         CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -286,7 +309,18 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
     }
 
     @Override
-    public void onConnected(@Nullable Bundle bundle) {
+    public void onConnected(Bundle bundle) {
+
+        Location location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+
+        if (location == null) {
+            LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, mLocationRequest, this);
+
+        } else {
+            //If everything went fine lets get latitude and longitude
+            currentLatitude = location.getLatitude();
+            currentLongitude = location.getLongitude();
+        }
 
     }
 
@@ -296,7 +330,58 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
     }
 
     @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+        if (connectionResult.hasResolution()) {
+            try {
+                // Start an Activity that tries to resolve the error
+                connectionResult.startResolutionForResult(getActivity(), 9000);
+                    /*
+                     * Thrown if Google Play services canceled the original
+                     * PendingIntent
+                     */
+            } catch (IntentSender.SendIntentException e) {
+                // Log the error
+                e.printStackTrace();
+            }
+        } else {
+                /*
+                 * If no resolution is available, display a dialog to the
+                 * user with the error.
+                 */
+            Log.e("Error", "Location services connection failed with code " + connectionResult.getErrorCode());
+        }
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Now lets connect to the API
+        googleApiClient.connect();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.v(this.getClass().getSimpleName(), "onPause()");
+
+        //Disconnect from API onPause()
+        if (googleApiClient.isConnected()) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient,this);
+            googleApiClient.disconnect();
+        }
+
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+        currentLatitude = location.getLatitude();
+        currentLongitude = location.getLongitude();
+
+        Toast.makeText(getActivity(), currentLatitude + " WORKS " + currentLongitude + "", Toast.LENGTH_LONG).show();
 
     }
 }

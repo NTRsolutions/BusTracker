@@ -37,13 +37,13 @@
             android:background="#fff"
             android:hint=""
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="35dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:padding="10dp"
             android:dropDownWidth="match_parent"
             android:dropDownHeight="wrap_content"
             android:layout_toRightOf="@+id/search"
+            android:layout_toLeftOf="@+id/gps_search"
             />
 
         <!--<ImageView-->
