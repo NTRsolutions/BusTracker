@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -19,7 +21,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -31,10 +32,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.others.DelayAutoCompleteTextView;
 import com.project.verbosetech.bustracker.others.GeoAutoCompleteAdapter;
 import com.project.verbosetech.bustracker.others.GeoSearchResult;
-import com.project.verbosetech.bustracker.R;
 
 import java.util.List;
 
@@ -61,6 +62,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
     FrameLayout fm;
 
     Button continuee,setReminder;
+    AlertDialog alertDialog;
 
     public PIckUpFragment() {
         // Required empty public constructor
@@ -84,7 +86,12 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getActivity(),"To be implemented",Toast.LENGTH_LONG).show();
+                Fragment fragment = new DropFragment();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                        android.R.anim.fade_out);
+                fragmentTransaction.replace(R.id.frame_location, fragment);
+                fragmentTransaction.commitAllowingStateLoss();
             }
         });
 
@@ -92,7 +99,21 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
             @Override
             public void onClick(View view) {
 
+                LayoutInflater li = LayoutInflater.from(getActivity());
+                View promptsView = li.inflate(R.layout.pickup_dialog, null);
+                Button skip=(Button) promptsView.findViewById(R.id.skip);
+                skip.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
+                        alertDialog.dismiss();
+                    }
+                });
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity(),R.style.MyDialogTheme);
+                alertDialogBuilder.setView(promptsView);
+                alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
 

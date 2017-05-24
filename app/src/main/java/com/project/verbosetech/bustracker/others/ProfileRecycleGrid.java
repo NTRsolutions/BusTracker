@@ -41,6 +41,7 @@ public class ProfileRecycleGrid extends RecyclerView.Adapter<ProfileRecycleGrid.
             this.phone_no=(TextView)itemView.findViewById(R.id.contact_number);
             this.email=(TextView) itemView.findViewById(R.id.email_add);
             this.profile_image=(ImageView)itemView.findViewById(R.id.img_profile);
+
         }
     }
 
@@ -78,7 +79,7 @@ public class ProfileRecycleGrid extends RecyclerView.Adapter<ProfileRecycleGrid.
                 .centerCrop()
                 .crossFade()
                 .thumbnail(0.5f)
-                .override(150,150)
+                .override(500,500)
                 .bitmapTransform(new CircleTransform(context))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(profile_image);

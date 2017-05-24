@@ -9,17 +9,15 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.models.Profile;
 import com.project.verbosetech.bustracker.others.ProfileRecycleGrid;
-import com.project.verbosetech.bustracker.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,20 +75,19 @@ public class profileActivity extends AppCompatActivity {
 
                 LayoutInflater li = LayoutInflater.from(profileActivity.this);
                 View promptsView = li.inflate(R.layout.profile_new_dialog_layout, null);
+                ImageView edit=(ImageView)promptsView.findViewById(R.id.edit);
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(profileActivity.this,R.style.MyTransparentDialog);
+                        alertDialog.dismiss();
+                    }
+                });
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(profileActivity.this,R.style.MyDialogTheme);
                 alertDialogBuilder.setView(promptsView);
                 alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
-                alertDialog.getWindow().setGravity(Gravity.LEFT|Gravity.BOTTOM);
-                WindowManager.LayoutParams layoutParams = alertDialog.getWindow().getAttributes();
-                layoutParams.x = -200; // left margin
-                layoutParams.y = 500; // bottom margin
-                alertDialog.getWindow().setAttributes(layoutParams);
-                alertDialog.getWindow().setLayout(1100,1000);
-
-
-
 
             }
         });

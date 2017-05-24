@@ -3,20 +3,67 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/layout"
+        android:weightSum="100"
+        android:paddingBottom="10dp"
+        android:paddingTop="15dp"
+        android:background="@color/splashTitle">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Same as pick up spot?"
+            android:layout_weight="60"
+            android:layout_marginLeft="25dp"
+            android:textSize="18dp"
+            android:textColor="#000"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:textAllCaps="false"
+            android:layout_weight="20"
+            android:background="@drawable/picked_droped_bckgrnd"
+            android:textColor="@color/splashTitle"
+            android:minHeight="30dp"
+            android:layout_marginRight="10dp"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:layout_weight="20"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/no_button_background"
+            android:textColor="@color/colorAccent"
+            android:textAllCaps="false"
+            android:minHeight="30dp"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:id="@+id/no"/>
+
+    </LinearLayout>
+
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="55dp"
+    android:layout_below="@+id/layout"
     >
 
-    <!--<fragment-->
-        <!--android:id="@+id/map2"-->
-        <!--android:name="com.google.android.gms.maps.MapFragment"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--/>-->
+    <fragment
+        android:id="@+id/map2"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
