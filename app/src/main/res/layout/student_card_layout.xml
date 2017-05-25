@@ -62,6 +62,7 @@
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold"
                 android:id="@+id/view_in_map"
+                android:textSize="10sp"
 
                 />
 

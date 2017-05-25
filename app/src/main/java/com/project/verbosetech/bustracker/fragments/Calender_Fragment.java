@@ -3,6 +3,7 @@ package com.project.verbosetech.bustracker.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,12 +80,19 @@ public class Calender_Fragment extends Fragment {
                 .dayNumberFormat("dd")    // Date format
                 .monthFormat("MMM") 	  // Month format
                 .showDayName(true)	  // Show or Hide dayName text
-                .showMonthName(true)	  // Show or Hide month text
+                .showMonthName(false)	  // Show or Hide month text
                 .textColor(Color.DKGRAY, Color.BLACK)    // Text color for none selected Dates, Text color for selected Date.
                 .selectedDateBackground(Color.TRANSPARENT)  // Background color of the selected date cell.
                 .selectorColor(Color.WHITE)// Color of the selection indicator bar (default to colorAccent).
                 .textSizeDayNumber(15.0f)
                 .build();
+
+        Fragment fragment =new DatewiseFragment();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                android.R.anim.fade_out);
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.commitAllowingStateLoss();
 
         left.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +102,12 @@ public class Calender_Fragment extends Fragment {
 
                 horizontalCalendar.selectDate(startdate.getTime(),true);
                 Toast.makeText(getActivity(),startdate.getTime().toString(),Toast.LENGTH_LONG).show();
+                Fragment fragment =new DatewiseFragment();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                        android.R.anim.fade_out);
+                fragmentTransaction.replace(R.id.frame_layout, fragment);
+                fragmentTransaction.commitAllowingStateLoss();
 
             }
         });
@@ -108,6 +122,12 @@ public class Calender_Fragment extends Fragment {
 //                getMonth();
                 horizontalCalendar.selectDate(endDate.getTime(),true);
                 Toast.makeText(getActivity(),startdate.getTime().toString(),Toast.LENGTH_LONG).show();
+                Fragment fragment =new DatewiseFragment();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                        android.R.anim.fade_out);
+                fragmentTransaction.replace(R.id.frame_layout, fragment);
+                fragmentTransaction.commitAllowingStateLoss();
 
 
             }
@@ -119,6 +139,12 @@ public class Calender_Fragment extends Fragment {
                 //do something
 
                 Toast.makeText(getActivity(),date.toString(),Toast.LENGTH_LONG).show();
+                Fragment fragment =new DatewiseFragment();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                        android.R.anim.fade_out);
+                fragmentTransaction.replace(R.id.frame_layout, fragment);
+                fragmentTransaction.commitAllowingStateLoss();
             }
 
             @Override
