@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
+
 <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
@@ -10,13 +12,18 @@
         android:id="@+id/toolbar1">
     </include>
 
+    <ScrollView android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_below="@+id/toolbar1"
+        >
+
 <RelativeLayout
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:layout_marginLeft="30dp"
     android:layout_marginTop="30dp"
     android:layout_marginRight="30dp"
-    android:layout_below="@+id/toolbar1"
     >
 
     <ImageView
@@ -153,6 +160,8 @@
         android:layout_marginRight="5dp">
     </View>
 
+
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -171,7 +180,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Type your message here"
+        android:hint="Type your message here"
         android:layout_below="@+id/subject"
         android:id="@+id/message"
         android:background="@drawable/round_corner"
@@ -204,5 +213,6 @@
 
 
 </RelativeLayout>
+    </ScrollView>
 
     </RelativeLayout>

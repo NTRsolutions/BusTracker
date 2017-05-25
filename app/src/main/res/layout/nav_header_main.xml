@@ -36,5 +36,6 @@
         app:backgroundTint="@color/colorPrimary"
         app:srcCompat="@drawable/ic_add_black_24dp"
         app:fabSize="auto"
+        android:id="@+id/add_profile"
         />
 </RelativeLayout>

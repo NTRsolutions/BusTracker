@@ -100,6 +100,36 @@ public class StudentTrackingActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
 
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+
+                if(tabLayout.getSelectedTabPosition()==0){
+                    tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_orange_24dp);
+                    tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_grey_24dp);
+                    tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_grey_24dp);}
+                if(tabLayout.getSelectedTabPosition()==1){
+                    tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_grey_24dp);
+                    tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_orange_24dp);
+                    tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_grey_24dp);}
+                if(tabLayout.getSelectedTabPosition()==2){
+                    tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_grey_24dp);
+                    tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_grey_24dp);
+                    tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_orange_24dp);}
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

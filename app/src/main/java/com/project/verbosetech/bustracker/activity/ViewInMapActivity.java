@@ -95,6 +95,35 @@ public class ViewInMapActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tab_host);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+
+                if(tabLayout.getSelectedTabPosition()==0){
+                    tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_orange_24dp);
+                    tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_grey_24dp);
+                    tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_grey_24dp);}
+                if(tabLayout.getSelectedTabPosition()==1){
+                    tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_grey_24dp);
+                    tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_orange_24dp);
+                    tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_grey_24dp);}
+                if(tabLayout.getSelectedTabPosition()==2){
+                    tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_grey_24dp);
+                    tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_grey_24dp);
+                    tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_orange_24dp);}
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         setupTabIcons();
     }
 

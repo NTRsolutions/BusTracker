@@ -42,7 +42,8 @@
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:textSize="15dp"/>
+        android:textSize="15dp"
+        android:id="@+id/pickup_change"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +68,8 @@
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:layout_marginTop="25dp"
-        android:textSize="15dp"/>
+        android:textSize="15dp"
+        android:id="@+id/drop_change"/>
 
     <View
         android:layout_width="match_parent"
@@ -97,7 +99,8 @@
         android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:textColor="@color/colorAccent"
-        android:textSize="15dp"/>
+        android:textSize="15dp"
+        android:id="@+id/select_all"/>
 
     <CheckBox
         android:layout_width="wrap_content"

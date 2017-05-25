@@ -93,6 +93,7 @@
         android:background="@color/splashTitle"
         app:tabGravity="center"
         android:transitionName="@string/activity_mixed_trans"
+        app:tabIndicatorColor="@color/colorPrimary"
         >
     </android.support.design.widget.TabLayout>
 

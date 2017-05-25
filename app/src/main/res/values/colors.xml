@@ -6,4 +6,5 @@
     <color name="textBox">#e8e8e8</color>
     <color name="splashTitle">#fff</color>
     <color name="primaryVeryDark">#ad7123</color>
+    <color name="grey">#7d7d7d</color>
 </resources>

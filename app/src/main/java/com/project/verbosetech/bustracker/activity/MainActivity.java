@@ -3,6 +3,7 @@ package com.project.verbosetech.bustracker.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -28,7 +29,7 @@ import com.project.verbosetech.bustracker.R;
  * Created by this pc on 11-05-17.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private NavigationView navigationView;
     private DrawerLayout drawer;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imgNavHeaderBg, imgProfile;
     private TextView txtName, txtWebsite;
     private Toolbar toolbar;
+    private FloatingActionButton add;
 
     // index to identify current nav menu item
     public static int navItemIndex = 0;
@@ -66,10 +68,16 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         prefManager = new PrefManager(getApplicationContext());
 
+
+
         mHandler = new Handler();
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View header=navigationView.getHeaderView(0);
+        add=(FloatingActionButton)header.findViewById(R.id.add_profile);
+        add.setOnClickListener(this);
+
 
         // Navigation view header
         navHeader = navigationView.getHeaderView(0);
@@ -326,4 +334,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+        if(add.getId()==view.getId()){
+
+            startActivity(new Intent(MainActivity.this,profileActivity.class));
+        }
+    }
 }
