@@ -5,4 +5,5 @@
     <color name="colorAccent">#706ef5</color>
     <color name="textBox">#e8e8e8</color>
     <color name="splashTitle">#fff</color>
+    <color name="primaryVeryDark">#ad7123</color>
 </resources>

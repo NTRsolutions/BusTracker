@@ -1,31 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="100">
 
     <include layout="@layout/toolbar"
         android:id="@+id/toolbar9">
     </include>
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:orientation="vertical"
+    android:layout_weight="50"
+    android:weightSum="100"
+    >
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/toolbar9"
         android:transitionName="@string/fragment_image_trans"
-
+        android:layout_weight="40"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_marginTop="110dp"
         android:id="@+id/layout"
-        android:weightSum="90">
+        android:weightSum="90"
+        android:layout_marginTop="-35dp"
+        android:layout_weight="50"
+        >
 
         <LinearLayout
             android:layout_width="0dp"
@@ -36,60 +46,60 @@
             >
 
 
-        <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_location_on_black_24dp"
-        android:id="@+id/location_symbol"
-        android:layout_marginTop="65dp"
-        android:layout_marginLeft="15dp"/>
-
-        <TextView
+            <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="View in Map"
-            android:layout_marginTop="70dp"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold"
-            android:id="@+id/view_in_map"
+            app:srcCompat="@drawable/ic_location_on_black_24dp"
+            android:id="@+id/location_symbol"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="15dp"/>
 
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View in Map"
+                android:layout_marginTop="70dp"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:id="@+id/view_in_map"
 
-        </LinearLayout>
+                />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/student_image"
-            android:transitionName="@string/activity_image_trans"
-            android:layout_weight="30"
-            />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:id="@+id/student_image"
+                android:transitionName="@string/activity_image_trans"
+                android:layout_weight="30"
+                />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_weight="30"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/status_colour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/circle"
             android:layout_marginTop="73dp"
-            android:id="@+id/status_colour"
+            android:src="@drawable/circle"
 
             />
 
         <TextView
+            android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="In Bus"
-            android:id="@+id/status"
             android:layout_below="@id/map"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="68dp"
             android:layout_toRightOf="@+id/status_colour"
-            android:layout_marginLeft="5dp"
+            android:text="In Bus"
             android:transitionName="@string/activity_text_trans"
 
             />
@@ -100,37 +110,50 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:text="Sachin Parekh"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/layout"
         android:id="@+id/student_name"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:textStyle="bold"
         android:textSize="18dp"
         android:textColor="#000"
         android:transitionName="@string/activity_text_trans"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="9"
         />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:text="Class 10th B Division"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/student_name"
         android:id="@+id/class_section"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:transitionName="@string/activity_text_trans"/>
+        android:transitionName="@string/activity_text_trans"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="11"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="50"
+        >
 
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/class_section"
         android:id="@+id/tab_host"
+        android:layout_below="@+id/class_section"
         app:tabGravity="center"
         android:transitionName="@string/activity_mixed_trans"
-        app:tabIndicatorColor="@color/colorPrimary">
+        app:tabIndicatorColor="@color/colorPrimary"
+        >
 
     </android.support.design.widget.TabLayout>
 
@@ -139,7 +162,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@color/primaryVeryDark"
         android:layout_below="@+id/tab_host"/>
 
+    </LinearLayout>
 
-</RelativeLayout>
+
+</LinearLayout>
