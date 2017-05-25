@@ -126,46 +126,48 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/textheights"
-                android:text="Reminder1"
+                android:text="Picked"
                 android:id="@+id/reminder1"
                 android:gravity="right"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
                 android:textSize="@dimen/textSize"
+                android:textColor="@color/splashTitle"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/textheights"
-                android:text="8:00am"
+                android:text="Reached"
                 android:layout_below="@+id/reminder1"
                 android:id="@+id/time1"
                 android:layout_alignParentRight="true"
-                android:textStyle="bold"
                 android:layout_gravity="right"
-                android:textSize="@dimen/textSize"/>
+                android:textSize="@dimen/textSize"
+                android:textColor="@color/splashTitle"/>
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/textheights"
-                android:text="Reminder2"
+                android:text="Left"
                 android:layout_below="@+id/time3"
                 android:textSize="@dimen/textSize"
                 android:id="@+id/reminder2"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
+                android:textColor="@color/splashTitle"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/textheights"
-                android:text="5:00pm"
+                android:text="Dropped"
                 android:layout_below="@+id/reminder2"
                 android:textSize="@dimen/textSize"
                 android:layout_alignParentRight="true"
-                android:textStyle="bold"
                 android:layout_gravity="right"
+                android:textColor="@color/splashTitle"
                 />
 
         </LinearLayout>

@@ -86,6 +86,33 @@ public class Calender_Fragment extends Fragment {
                 .textSizeDayNumber(15.0f)
                 .build();
 
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                horizontalCalendar.selectDate(startdate.getTime(),true);
+                Toast.makeText(getActivity(),startdate.getTime().toString(),Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                Toast.makeText(getActivity(),new SimpleDateFormat("MMMM").format(endDate.getTime())+"",Toast.LENGTH_LONG).show();
+//                month.setText(new SimpleDateFormat("MMMM").format(endDate.getTime()));
+//                year.setText(new SimpleDateFormat("yyyy").format(endDate.getTime())+"");
+//                getMonth();
+                horizontalCalendar.selectDate(endDate.getTime(),true);
+                Toast.makeText(getActivity(),startdate.getTime().toString(),Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Date date, int position) {
@@ -109,29 +136,7 @@ public class Calender_Fragment extends Fragment {
 
 
 
-        left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-
-                horizontalCalendar.selectDate(startdate.getTime(),true);
-
-            }
-        });
-
-        right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-//                Toast.makeText(getActivity(),new SimpleDateFormat("MMMM").format(endDate.getTime())+"",Toast.LENGTH_LONG).show();
-//                month.setText(new SimpleDateFormat("MMMM").format(endDate.getTime()));
-//                year.setText(new SimpleDateFormat("yyyy").format(endDate.getTime())+"");
-//                getMonth();
-                horizontalCalendar.selectDate(endDate.getTime(),true);
-
-            }
-        });
 
         return view;
     }
