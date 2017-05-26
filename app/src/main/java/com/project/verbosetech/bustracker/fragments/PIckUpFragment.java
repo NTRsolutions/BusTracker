@@ -378,6 +378,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
     @Override
     public void onLocationChanged(Location location) {
 
+
         currentLatitude = location.getLatitude();
         currentLongitude = location.getLongitude();
 
