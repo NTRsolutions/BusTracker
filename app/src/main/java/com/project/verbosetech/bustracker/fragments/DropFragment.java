@@ -11,9 +11,11 @@ import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,6 +23,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -56,7 +59,6 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
     private Integer THRESHOLD = 2;
     private DelayAutoCompleteTextView geo_autocomplete;
     ImageView gps_search;
-    FrameLayout fm;
     DelayAutoCompleteTextView textView;
     LatLng user_latlang;
     GoogleApiClient googleApiClient;
@@ -70,6 +72,8 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
     private double currentLongitude;
 
     private static final LatLng MOUNTAIN_VIEW = new LatLng(37.4, -122.1);
+
+    FrameLayout fm;
 
     public DropFragment() {
         // Required empty public constructor
@@ -148,16 +152,7 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
         gps_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!textView.getText().toString().equals("")) {
-                    search(Map, getLocationFromAddress(textView.getText().toString()));
-                    Log.e("Addresssss", textView.getText().toString());
 
-                    GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,getLocationFromAddress(textView.getText().toString()),new LatLng(26.2520944,78.1794855));
-                    Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-
-                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(fm.getWindowToken(), 0);
-                } else {
                     Toast.makeText(getActivity(),currentLatitude+" ,"+currentLongitude,Toast.LENGTH_LONG).show();
                     search(Map,new LatLng(currentLatitude,currentLongitude));
 
@@ -165,7 +160,23 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
 
                     Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
+            }
+        });
+
+        textView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    if (!textView.getText().toString().equals("")) {
+                        search(Map, getLocationFromAddress(textView.getText().toString()));
+                        Log.e("Addresssss", textView.getText().toString());
+
+                        GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,getLocationFromAddress(textView.getText().toString()),new LatLng(26.2520944,78.1794855));
+                        Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+
+                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(fm.getWindowToken(), 0);}
                 }
+                return false;
             }
         });
 
@@ -178,6 +189,35 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
                 LayoutInflater li = LayoutInflater.from(getActivity());
                 View promptsView = li.inflate(R.layout.dropdialog_layout, null);
                 Button skip=(Button)promptsView.findViewById(R.id.skip);
+                final TextView distance=(TextView)promptsView.findViewById(R.id.distance);
+                ImageView add=(ImageView)promptsView.findViewById(R.id.add);
+                ImageView sub=(ImageView)promptsView.findViewById(R.id.sub);
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        double cal_dist,d;
+                        String a[]=distance.getText().toString().split(" ");
+                        d=Double.parseDouble(a[0]);
+                        cal_dist=d+1;
+                        distance.setText(cal_dist+" km");
+
+                    }
+                });
+
+                sub.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        double cal_dist=0.0,d;
+                        String a[]=distance.getText().toString().split(" ");
+                        d=Double.parseDouble(a[0]);
+                        if(d>=1.0)
+                            cal_dist=d-1;
+                        distance.setText(cal_dist+" km");
+
+                    }
+                });
                 skip.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

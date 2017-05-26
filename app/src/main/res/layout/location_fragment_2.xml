@@ -3,8 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="55dp"
-    android:layout_below="@+id/layout21">
+    android:id="@+id/layout21">
 
     <fragment
         android:id="@+id/map2"

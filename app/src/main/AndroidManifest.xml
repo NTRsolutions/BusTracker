@@ -42,19 +42,7 @@
             android:name=".activity.OtpActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activity.ContactActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".activity.AboutSchoolActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
             android:name=".activity.MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".activity.LocationActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".activity.profileActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".activity.StudentTrackingActivity"

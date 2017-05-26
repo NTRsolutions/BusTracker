@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/reminder_icon"
-                app:srcCompat="@drawable/ic_notifications_black_24dp"
+                app:srcCompat="@drawable/ic_picked"
                 />
             <View
                 android:layout_width="1dp"
@@ -113,7 +113,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_location_on_black_24dp"
+                app:srcCompat="@drawable/ic_reached"
                 android:id="@+id/school_icon3" />
 
             <View
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/reminder_icon2"
                 android:layout_below="@+id/toolbar"
-                app:srcCompat="@drawable/ic_notifications_black_24dp"
+                app:srcCompat="@drawable/ic_reached"
                 />
             <View
                 android:layout_width="1dp"
@@ -156,7 +156,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_location_on_black_24dp"
+            app:srcCompat="@drawable/ic_dropper"
             android:id="@+id/location_icon3"
 
 

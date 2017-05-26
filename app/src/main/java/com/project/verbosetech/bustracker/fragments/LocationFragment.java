@@ -1,48 +1,36 @@
-package com.project.verbosetech.bustracker.activity;
+package com.project.verbosetech.bustracker.fragments;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.project.verbosetech.bustracker.R;
-import com.project.verbosetech.bustracker.fragments.DropFragment;
-import com.project.verbosetech.bustracker.fragments.PIckUpFragment;
 
 import static com.project.verbosetech.bustracker.R.drawable.drop_bkgrnd;
 import static com.project.verbosetech.bustracker.R.drawable.pickup_bkgrnd;
 
-
 /**
- * Created by this pc on 14-05-17.
+ * Created by this pc on 27-05-17.
  */
 
-public class LocationActivity extends AppCompatActivity {
+public class LocationFragment extends Fragment {
 
-    Toolbar toolbar;
+    private View view;
     Button pickup,drop;
 
+
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.location_main);
-        toolbar=(Toolbar)findViewById(R.id.toolbar5);
-        toolbar.setTitle("Edit Location");
-        toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white_24dp);
-        setSupportActionBar(toolbar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view=inflater.inflate(R.layout.location_main,container,false);
 
         intializeButtons();
 
         Fragment fragment = new PIckUpFragment();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
                 android.R.anim.fade_out);
         fragmentTransaction.replace(R.id.frame_location, fragment);
@@ -59,7 +47,7 @@ public class LocationActivity extends AppCompatActivity {
                 drop.setTextColor(getResources().getColor(R.color.splashTitle));
                 drop.setBackground(getResources().getDrawable(drop_bkgrnd));
                 Fragment fragment = new PIckUpFragment();
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
                         android.R.anim.fade_out);
                 fragmentTransaction.replace(R.id.frame_location, fragment);
@@ -79,7 +67,7 @@ public class LocationActivity extends AppCompatActivity {
                 pickup.setTextColor(getResources().getColor(R.color.splashTitle));
                 pickup.setBackground(getResources().getDrawable(drop_bkgrnd));
                 Fragment fragment = new DropFragment();
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
                         android.R.anim.fade_out);
                 fragmentTransaction.replace(R.id.frame_location, fragment);
@@ -87,38 +75,12 @@ public class LocationActivity extends AppCompatActivity {
 
             }
         });
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                startActivity(new Intent(LocationActivity.this,MainActivity.class));
-                finish();
-            }
-        });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        initilizeMap();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_home,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+        return view;
     }
 
     public void changeButton()
     {
-//        Button pickup=(Button)findViewById(R.id.pick_up);
-//        Button drop=(Button)findViewById(R.id.drop);
+        intializeButtons();
         drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orange_24dp, 0, 0, 0);
         drop.setTextColor(getResources().getColor(R.color.colorPrimary));
         drop.setBackground(getResources().getDrawable(pickup_bkgrnd));
@@ -129,8 +91,8 @@ public class LocationActivity extends AppCompatActivity {
 
     public void intializeButtons(){
 
-        pickup=(Button)findViewById(R.id.pick_up);
-        drop=(Button)findViewById(R.id.drop);
-    }
 
+        pickup=(Button)view.findViewById(R.id.pick_up);
+        drop=(Button)view.findViewById(R.id.drop);
+    }
 }

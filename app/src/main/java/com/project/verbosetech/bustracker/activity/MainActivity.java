@@ -1,6 +1,5 @@
 package com.project.verbosetech.bustracker.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -10,20 +9,25 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.project.verbosetech.bustracker.R;
+import com.project.verbosetech.bustracker.fragments.AboutSchoolFragment;
+import com.project.verbosetech.bustracker.fragments.ContactFragment;
 import com.project.verbosetech.bustracker.fragments.HomeFragment;
+import com.project.verbosetech.bustracker.fragments.LocationFragment;
 import com.project.verbosetech.bustracker.fragments.NotificationsFragment;
+import com.project.verbosetech.bustracker.fragments.ProfileFragment;
 import com.project.verbosetech.bustracker.fragments.SettingsFragment;
 import com.project.verbosetech.bustracker.others.PrefManager;
-import com.project.verbosetech.bustracker.R;
 
 /**
  * Created by this pc on 11-05-17.
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Handler mHandler;
 
     PrefManager prefManager;
+    AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,12 +164,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Fragment getHomeFragment() {
         switch (navItemIndex) {
             case 0:
-                // home
                 HomeFragment homeFragment = new HomeFragment();
                 return homeFragment;
+            case 1:
+                ProfileFragment profileFragment = new ProfileFragment();
+                return profileFragment;
+            case 2:
+                LocationFragment locationFragment = new LocationFragment();
+                return locationFragment;
             case 3:
                 SettingsFragment settingsFragment = new SettingsFragment();
                 return settingsFragment;
+            case 4:
+                AboutSchoolFragment aboutSchoolFragment = new AboutSchoolFragment();
+                return aboutSchoolFragment;
+            case 5:
+                ContactFragment contactFragment = new ContactFragment();
+                return contactFragment;
 
             default:
                 return new HomeFragment();
@@ -210,12 +226,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         navItemIndex = 4;
                         CURRENT_TAG = TAG_SCHOOL;
                         break;
-
                     case R.id.nav_contact:
                         navItemIndex = 5;
                         CURRENT_TAG = TAG_CONTACTS;
                         break;
-
                     default:
                         navItemIndex = 0;
                 }
@@ -228,29 +242,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 menuItem.setChecked(true);
 
-                if (navItemIndex == 5)
-
-                {
-                    startActivity(new Intent(MainActivity.this, ContactActivity.class));
-                    finish();
-                } else if (navItemIndex == 4)
-
-                {
-                    startActivity(new Intent(MainActivity.this, AboutSchoolActivity.class));
-                    finish();
-                } else if (navItemIndex == 2)
-
-                {
-                    startActivity(new Intent(MainActivity.this, LocationActivity.class));
-                    finish();
-                } else if (navItemIndex == 1)
-
-                {
-                    startActivity(new Intent(MainActivity.this, profileActivity.class));
-                    finish();
-                } else
-
-                    loadHomeFragment();
+                loadHomeFragment();
 
                 return true;
             }
@@ -315,18 +307,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (item.getItemId() == R.id.action_message) {
 
             Fragment fragment1 = new NotificationsFragment();
-            Fragment fragment2 = new HomeFragment();
-            if (prefManager.getNotifyStatus() == null) {
-
-                getSupportFragmentManager().beginTransaction().add(R.id.frame, fragment1, CURRENT_TAG).addToBackStack(CURRENT_TAG).commit();
-                prefManager.setNotifyStatus("1");
-                Log.e("1", "1");
-            } else {
-                Fragment fragment = new HomeFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame, fragment2).commitAllowingStateLoss();
-                prefManager.setNotifyStatus(null);
-                Log.e("Null", "Null");
+            FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();
+            Fragment fragment2 = getHomeFragment();
+//            if (prefManager.getNotifyStatus() == null) {
+//
+//                getSupportFragmentManager().beginTransaction().add(R.id.frame, fragment1, CURRENT_TAG).addToBackStack(CURRENT_TAG).commit();
+//                prefManager.setNotifyStatus("1");
+//                Log.e("1", "1");
+//            } else {
+//                getSupportFragmentManager().beginTransaction().replace(R.id.frame, fragment2, CURRENT_TAG).commitAllowingStateLoss();
+//                loadHomeFragment();
+//                prefManager.setNotifyStatus(null);
+//                Log.e("Null", "Null");
+//            }
+            if(fragment1.isDetached()){
+                fragTransaction.attach(fragment1);
             }
+            else{
+                fragTransaction.detach(fragment1);
+            }
+            fragTransaction.commit();
         }
 
 
@@ -339,7 +339,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(add.getId()==view.getId()){
 
-            startActivity(new Intent(MainActivity.this,profileActivity.class));
+            LayoutInflater li = LayoutInflater.from(MainActivity.this);
+            View promptsView = li.inflate(R.layout.profile_new_dialog_layout, null);
+            ImageView edit=(ImageView)promptsView.findViewById(R.id.edit);
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    alertDialog.dismiss();
+                }
+            });
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this,R.style.MyDialogTheme);
+            alertDialogBuilder.setView(promptsView);
+            alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
         }
     }
 }

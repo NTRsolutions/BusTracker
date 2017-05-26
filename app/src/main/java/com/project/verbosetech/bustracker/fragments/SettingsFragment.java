@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.verbosetech.bustracker.R;
@@ -64,6 +65,35 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 li = LayoutInflater.from(getActivity());
                 promptsView = li.inflate(R.layout.pickup_dialog, null);
                 Button skip = (Button) promptsView.findViewById(R.id.skip);
+                final TextView distance=(TextView)promptsView.findViewById(R.id.distance);
+                ImageView add=(ImageView)promptsView.findViewById(R.id.add);
+                ImageView sub=(ImageView)promptsView.findViewById(R.id.sub);
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        double cal_dist,d;
+                        String a[]=distance.getText().toString().split(" ");
+                        d=Double.parseDouble(a[0]);
+                        cal_dist=d+1;
+                        distance.setText(cal_dist+" km");
+
+                    }
+                });
+
+                sub.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        double cal_dist=0.0,d;
+                        String a[]=distance.getText().toString().split(" ");
+                        d=Double.parseDouble(a[0]);
+                        if(d>=1.0)
+                            cal_dist=d-1;
+                        distance.setText(cal_dist+" km");
+
+                    }
+                });
                 skip.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -84,6 +114,35 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 li = LayoutInflater.from(getActivity());
                 promptsView = li.inflate(R.layout.dropdialog_layout, null);
                 Button skipd = (Button) promptsView.findViewById(R.id.skip);
+                final TextView distance1=(TextView)promptsView.findViewById(R.id.distance);
+                ImageView add1=(ImageView)promptsView.findViewById(R.id.add);
+                ImageView sub1=(ImageView)promptsView.findViewById(R.id.sub);
+                add1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        double cal_dist,d;
+                        String a[]=distance1.getText().toString().split(" ");
+                        d=Double.parseDouble(a[0]);
+                        cal_dist=d+1;
+                        distance1.setText(cal_dist+" km");
+
+                    }
+                });
+
+                sub1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        double cal_dist=0.0,d;
+                        String a[]=distance1.getText().toString().split(" ");
+                        d=Double.parseDouble(a[0]);
+                        if(d>=1.0)
+                            cal_dist=d-1;
+                        distance1.setText(cal_dist+" km");
+
+                    }
+                });
                 skipd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
