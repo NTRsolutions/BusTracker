@@ -50,7 +50,6 @@ public class PrefManager {
 
     }
 
-
     public void setNotifyStatus(String status) {
 
         editor.putString("status", status);
@@ -63,6 +62,12 @@ public class PrefManager {
         editor.commit();
     }
 
+    public void setTabNumber(int number) {
+
+        editor.putInt("number", number);
+        editor.commit();
+    }
+
 
     public String getNotifyStatus() {
         return pref.getString("status", null);
@@ -70,6 +75,10 @@ public class PrefManager {
 
     public String getName() {
         return pref.getString("name", null);
+    }
+
+    public int getTabNumber() {
+        return pref.getInt("number", 0);
     }
 
 

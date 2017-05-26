@@ -21,13 +21,13 @@
     </style>
 
     <style name="MyButtonStyle1" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:drawableLeft">@drawable/ic_location_on_orange_24dp</item>
+        <item name="android:drawableLeft">@drawable/ic_pickup_active</item>
         <item name="android:background">@drawable/pickup_bkgrnd</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="MyButtonStyle2" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:drawableLeft">@drawable/ic_location_on_orang_24dp</item>
+        <item name="android:drawableLeft">@drawable/ic_drop_down_inactive</item>
         <item name="android:background">@drawable/drop_bkgrnd</item>
         <item name="android:textColor">#fff</item>
     </style>

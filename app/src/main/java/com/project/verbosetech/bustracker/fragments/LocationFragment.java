@@ -40,10 +40,10 @@ public class LocationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orange_24dp, 0, 0, 0);
+                pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_pickup_active, 0, 0, 0);
                 pickup.setTextColor(getResources().getColor(R.color.colorPrimary));
                 pickup.setBackground(getResources().getDrawable(pickup_bkgrnd));
-                drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orang_24dp, 0, 0, 0);
+                drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_drop_down_inactive, 0, 0, 0);
                 drop.setTextColor(getResources().getColor(R.color.splashTitle));
                 drop.setBackground(getResources().getDrawable(drop_bkgrnd));
                 Fragment fragment = new PIckUpFragment();
@@ -60,10 +60,10 @@ public class LocationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orange_24dp, 0, 0, 0);
+                drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_drop_down_active, 0, 0, 0);
                 drop.setTextColor(getResources().getColor(R.color.colorPrimary));
                 drop.setBackground(getResources().getDrawable(pickup_bkgrnd));
-                pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orang_24dp, 0, 0, 0);
+                pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_pickup_inactive, 0, 0, 0);
                 pickup.setTextColor(getResources().getColor(R.color.splashTitle));
                 pickup.setBackground(getResources().getDrawable(drop_bkgrnd));
                 Fragment fragment = new DropFragment();
@@ -81,10 +81,10 @@ public class LocationFragment extends Fragment {
     public void changeButton()
     {
         intializeButtons();
-        drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orange_24dp, 0, 0, 0);
+        drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_drop_down_active, 0, 0, 0);
         drop.setTextColor(getResources().getColor(R.color.colorPrimary));
         drop.setBackground(getResources().getDrawable(pickup_bkgrnd));
-        pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_location_on_orang_24dp, 0, 0, 0);
+        pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_pickup_inactive, 0, 0, 0);
         pickup.setTextColor(getResources().getColor(R.color.splashTitle));
         pickup.setBackground(getResources().getDrawable(drop_bkgrnd));
     }

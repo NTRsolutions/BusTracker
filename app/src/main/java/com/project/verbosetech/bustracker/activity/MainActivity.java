@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // if user select the current navigation menu again, don't do anything
         // just close the navigation drawer
-        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
+        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) == getCurrentFragment()) {
             drawer.closeDrawers();
             return;
         }
@@ -181,7 +182,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 5:
                 ContactFragment contactFragment = new ContactFragment();
                 return contactFragment;
-
             default:
                 return new HomeFragment();
         }
@@ -307,26 +307,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (item.getItemId() == R.id.action_message) {
 
             Fragment fragment1 = new NotificationsFragment();
-            FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();
-            Fragment fragment2 = getHomeFragment();
-//            if (prefManager.getNotifyStatus() == null) {
-//
-//                getSupportFragmentManager().beginTransaction().add(R.id.frame, fragment1, CURRENT_TAG).addToBackStack(CURRENT_TAG).commit();
-//                prefManager.setNotifyStatus("1");
-//                Log.e("1", "1");
-//            } else {
-//                getSupportFragmentManager().beginTransaction().replace(R.id.frame, fragment2, CURRENT_TAG).commitAllowingStateLoss();
-//                loadHomeFragment();
-//                prefManager.setNotifyStatus(null);
-//                Log.e("Null", "Null");
-//            }
-            if(fragment1.isDetached()){
-                fragTransaction.attach(fragment1);
+            getSupportFragmentManager().beginTransaction().attach(fragment1).commit();
+            if (prefManager.getNotifyStatus() == null) {
+                getSupportFragmentManager().beginTransaction().show(fragment1).commit();
+                prefManager.setNotifyStatus("1");
+                Log.e("1", "1");
+            } else {
+                getSupportFragmentManager().beginTransaction().hide(fragment1).commit();
+                prefManager.setNotifyStatus(null);
+                Log.e("Null", "Null");
             }
-            else{
-                fragTransaction.detach(fragment1);
-            }
-            fragTransaction.commit();
+
         }
 
 
@@ -356,5 +347,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             alertDialog.show();
 
         }
+    }
+
+    protected int getFragmentCount() {
+        return getSupportFragmentManager().getBackStackEntryCount();
+    }
+
+    private Fragment getFragmentAt(int index) {
+        return getFragmentCount() > 0 ? getSupportFragmentManager().findFragmentByTag(Integer.toString(index)) : null;
+    }
+
+    protected Fragment getCurrentFragment() {
+        return getFragmentAt(getFragmentCount() - 1);
     }
 }
