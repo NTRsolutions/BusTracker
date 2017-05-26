@@ -1,62 +1,55 @@
 package com.project.verbosetech.bustracker.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
-import com.daimajia.androidanimations.library.Techniques;
 import com.project.verbosetech.bustracker.R;
-import com.viksaa.sssplash.lib.activity.AwesomeSplash;
-import com.viksaa.sssplash.lib.cnst.Flags;
-import com.viksaa.sssplash.lib.model.ConfigSplash;
 
 /**
  * Created by this pc on 12-05-17.
  */
 
-public class SplashActivity extends AwesomeSplash {
+public class SplashActivity extends AppCompatActivity {
 
-
-    @Override
-    public void initSplash(ConfigSplash configSplash) {
-
-        //Customize Circular Reveal
-        configSplash.setBackgroundColor(R.color.colorPrimary); //any color you want form colors.xml
-        configSplash.setAnimCircularRevealDuration(800); //int ms
-        configSplash.setRevealFlagX(Flags.REVEAL_RIGHT);  //or Flags.REVEAL_LEFT
-        configSplash.setRevealFlagY(Flags.REVEAL_BOTTOM); //or Flags.REVEAL_TOP
-
-
-
-        //Customize Logo
-        configSplash.setLogoSplash(R.drawable.logo); //or any other drawable
-        configSplash.setAnimLogoSplashDuration(1000); //int ms
-        configSplash.setAnimLogoSplashTechnique(Techniques.BounceInDown);
-
-        //Customize Path
-        // configSplash.setPathSplash(Constants.DROID_LOGO); //set path String
-        configSplash.setOriginalHeight(400); //in relation to your svg (path) resource
-        configSplash.setOriginalWidth(400); //in relation to your svg (path) resource
-        configSplash.setAnimPathStrokeDrawingDuration(3000);
-        configSplash.setPathSplashStrokeSize(3);
-        configSplash.setPathSplashStrokeColor(R.color.colorAccent); //any color you want form colors.xml
-        configSplash.setAnimPathFillingDuration(3000);
-        configSplash.setPathSplashFillColor(R.color.colorPrimary); //path object filling color
-
-        //Customize Title
-        configSplash.setTitleSplash("SCHOOL BUS TRACKER");
-        configSplash.setTitleTextColor(R.color.splashTitle);
-        configSplash.setTitleTextSize(30f); //float value
-        configSplash.setAnimTitleDuration(3000);
-        configSplash.setAnimTitleTechnique(Techniques.BounceInDown);
-
-    }
+    private static int SPLASH_TIME_OUT = 1000;
+    Animation animation;
+    ImageView logo;
+    LinearLayout linearLayout;
 
     @Override
-    public void animationsFinished() {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.splash_screen_layout);
+        logo=(ImageView)findViewById(R.id.app_icon);
+        linearLayout=(LinearLayout)findViewById(R.id.layout);
 
-        //transit to another activity here
+        animation = AnimationUtils.loadAnimation(this,R.anim.shake_animation);
+        linearLayout.startAnimation(animation);
 
-        Intent i =new Intent(SplashActivity.this,SignInActivity.class);
-        startActivity(i);
-        finish();
+        new Handler().postDelayed(new Runnable() {
+
+            /*
+             * Showing splash screen with a timer. This will be useful when you
+             * want to show case your app logo / company
+             */
+
+            @Override
+            public void run() {
+                // This method will be executed once the timer is over
+                // Start your app main activity
+                Intent i = new Intent(SplashActivity.this, SignInActivity.class);
+                startActivity(i);
+
+                // close this activity
+                finish();
+            }
+        }, SPLASH_TIME_OUT);
     }
+
 }
