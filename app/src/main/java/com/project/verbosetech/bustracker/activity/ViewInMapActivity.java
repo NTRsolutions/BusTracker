@@ -139,13 +139,31 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
         });
         setupTabIcons();
 
+
+
         try {
 
-            mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map3);
+            mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map3);
             if (mapFragment == null) {
                 mapFragment = SupportMapFragment.newInstance();
                 getSupportFragmentManager().beginTransaction().replace(R.id.map3, mapFragment).commit();
             }
+
+            //                    }
+            googleApiClient = new GoogleApiClient.Builder(getApplicationContext())
+                    // The next two lines tell the new client that “this” current class will handle connection stuff
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    //fourth line adds the LocationServices API endpoint from GooglePlayServices
+                    .addApi(LocationServices.API)
+                    .build();
+
+            // Create the LocationRequest object
+            mLocationRequest = LocationRequest.create()
+                    .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                    .setInterval(10 * 1000)        // 10 seconds, in milliseconds
+                    .setFastestInterval(1 * 1000); // 1 second, in milliseconds
+
             mapFragment.getMapAsync(new OnMapReadyCallback() {
                 @Override
                 public void onMapReady(GoogleMap googleMap) {
@@ -175,11 +193,10 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
 //                        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
 //                        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 //                        layoutParams.setMargins(0,0,0,0);
-//                    }
 
-                    search(Map,new LatLng(currentLatitude,currentLongitude));
+                    search(Map,new LatLng(26.2520000,78.1889999));
 
-                    GoogleMapsPath googleMapsPath=new GoogleMapsPath(ViewInMapActivity.this,Map,new LatLng(currentLatitude,currentLongitude),new LatLng(26.2520944,78.1794855));
+                    GoogleMapsPath googleMapsPath=new GoogleMapsPath(ViewInMapActivity.this,Map,new LatLng(26.2520000,78.1889999),new LatLng(26.2520944,78.1794855));
 
                     Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
@@ -189,19 +206,7 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
                 }
             });
 
-            googleApiClient = new GoogleApiClient.Builder(getApplicationContext())
-                    // The next two lines tell the new client that “this” current class will handle connection stuff
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    //fourth line adds the LocationServices API endpoint from GooglePlayServices
-                    .addApi(LocationServices.API)
-                    .build();
 
-            // Create the LocationRequest object
-            mLocationRequest = LocationRequest.create()
-                    .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                    .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-                    .setFastestInterval(1 * 1000); // 1 second, in milliseconds
 
         } catch (Exception e) {
             e.printStackTrace();
