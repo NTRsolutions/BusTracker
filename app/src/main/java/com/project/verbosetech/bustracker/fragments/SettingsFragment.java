@@ -23,6 +23,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     TextView select,pickup_change,drop_change;
     CheckBox checkBox1,checkBox2,checkBox3,checkBox4;
     AlertDialog alertDialog;
+    LayoutInflater li;
+    View promptsView;
+    AlertDialog.Builder alertDialogBuilder;
 
     @Nullable
     @Override
@@ -35,7 +38,6 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         checkBox4=(CheckBox)view.findViewById(R.id.leftbox);
         pickup_change=(TextView)view.findViewById(R.id.pickup_change);
         drop_change=(TextView)view.findViewById(R.id.drop_change);
-        drop_change=(TextView)view.findViewById(R.id.select_all);
 
         select.setOnClickListener(this);
         pickup_change.setOnClickListener(this);
@@ -59,8 +61,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
             case R.id.pickup_change:
 
-                LayoutInflater li = LayoutInflater.from(getActivity());
-                View promptsView = li.inflate(R.layout.pickup_dialog, null);
+                li = LayoutInflater.from(getActivity());
+                promptsView = li.inflate(R.layout.pickup_dialog, null);
                 Button skip = (Button) promptsView.findViewById(R.id.skip);
                 skip.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -70,7 +72,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                     }
                 });
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
+                alertDialogBuilder = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
                 alertDialogBuilder.setView(promptsView);
                 alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
@@ -79,9 +81,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
             case R.id.drop_change:
 
-                LayoutInflater li2 = LayoutInflater.from(getActivity());
-                View promptView = li2.inflate(R.layout.dropdialog_layout, null);
-                Button skipd = (Button) promptView.findViewById(R.id.skip);
+                li = LayoutInflater.from(getActivity());
+                promptsView = li.inflate(R.layout.dropdialog_layout, null);
+                Button skipd = (Button) promptsView.findViewById(R.id.skip);
                 skipd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -90,9 +92,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                     }
                 });
 
-                AlertDialog.Builder alertDialogBuilderd = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
-                alertDialogBuilderd.setView(promptView);
-                alertDialog = alertDialogBuilderd.create();
+                alertDialogBuilder = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
+                alertDialogBuilder.setView(promptsView);
+                alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
 
         }

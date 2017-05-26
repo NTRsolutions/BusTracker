@@ -111,7 +111,7 @@ public class profileActivity extends AppCompatActivity {
         profileList=new ArrayList<>();
         profileList.add(new Profile("Rajesh Gupta",urlProfileImg,"Father","+91 903 335 6708","rajeshgupta@gmail.com"));
         profileList.add(new Profile("Rajesh Gupta",urlProfileImg,"Father","+91 903 335 6708","rajeshgupta@gmail.com"));
-        adapter=new ProfileRecycleGrid(profileList,getApplicationContext());
+        adapter=new ProfileRecycleGrid(profileList,profileActivity.this);
         recyclerView.setAdapter(adapter);
     }
 }

@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:id="@+id/title_bar"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:gravity="center">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -89,37 +90,55 @@
             android:layout_marginTop="15dp"
             android:textSize="18dp"/>
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/skip"
             android:layout_below="@+id/text2"
-            android:text="Skip"
-            android:textAllCaps="false"
-            android:background="@drawable/skipbutton_bkgrnd"
-            android:textColor="@color/colorAccent"
-            android:textSize="20dp"
-            android:paddingRight="50dp"
-            android:paddingLeft="50dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/set"
-            android:layout_below="@+id/text2"
-            android:layout_alignParentRight="true"
-            android:text="Set"
-            android:textAllCaps="false"
-            android:background="@drawable/setbutton_bckgrnd"
-            android:textSize="20dp"
-            android:paddingRight="55dp"
-            android:paddingLeft="55dp"
-            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:weightSum="100"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="25dp"
-            android:textColor="@color/splashTitle"/>
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/skip"
+                android:text="Skip"
+                android:textAllCaps="false"
+                android:background="@drawable/skipbutton_bkgrnd"
+                android:textColor="@color/colorAccent"
+                android:textSize="16dp"
+                android:paddingRight="30dp"
+                android:paddingLeft="30dp"
+                android:layout_weight="35"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="30"></LinearLayout>
+
+            <Button
+                android:id="@+id/set"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="35"
+                android:background="@drawable/setbutton_bckgrnd"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Set"
+                android:textAllCaps="false"
+                android:textColor="@color/splashTitle"
+                android:textSize="16dp"
+                />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
