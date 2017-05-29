@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:elevation="15dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:background="@color/colorPrimary"
+            android:id="@+id/tab_bar"
             >
 
             <Button
@@ -57,12 +53,11 @@
 
         </RelativeLayout>
 
-    </android.support.design.widget.AppBarLayout>
-
     <FrameLayout
         android:id="@+id/frame_location"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/tab_bar"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"></FrameLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

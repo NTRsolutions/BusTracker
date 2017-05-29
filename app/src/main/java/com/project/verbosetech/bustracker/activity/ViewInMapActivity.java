@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -59,16 +60,15 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
     String image_address = "http://media.gettyimages.com/photos/male-high-school-student-portrait-picture-id98680202?s=170667a";
     ImageView student_image;
     private ViewPager viewPager;
-
+    Button edit_location;
 
     private GoogleMap Map;
-    private Integer THRESHOLD = 2;
     SupportMapFragment mapFragment;
-    private static final LatLng MOUNTAIN_VIEW = new LatLng(37.4, -122.1);
     GoogleApiClient googleApiClient;
     private LocationRequest mLocationRequest;
     private double currentLatitude;
     private double currentLongitude;
+
 
 
 
@@ -77,11 +77,12 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_in_map_layout);
         pref = new PrefManager(getApplicationContext());
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar8);
         toolbar.setTitle(pref.getName());
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white_24dp);
         setSupportActionBar(toolbar);
+        edit_location=(Button)toolbar.findViewById(R.id.edit_location);
         student_image = (ImageView) findViewById(R.id.student_image);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -91,6 +92,14 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
                 Intent intent = new Intent(ViewInMapActivity.this, StudentTrackingActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        edit_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(ViewInMapActivity.this,MainActivity.class));
             }
         });
 

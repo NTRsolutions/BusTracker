@@ -3,12 +3,17 @@ package com.project.verbosetech.bustracker;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.support.v7.app.AppCompatDelegate;
 
 /**
  * Created by a_man on 5/23/2017.
  */
 
 public class BusTrackerApplication extends Application {
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     @Override
     protected void attachBaseContext(Context base) {

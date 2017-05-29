@@ -1,14 +1,11 @@
 package com.project.verbosetech.bustracker.fragments;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,27 +52,27 @@ public class TrackingFragment extends Fragment {
             public void onClick(View view) {
 
                 Intent intent = new Intent(getActivity(), ViewInMapActivity.class);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
-                    View student_image  =  view.findViewById(R.id.student_image);
-                    View status =  view.findViewById(R.id.status);
-                    View name= view.findViewById(R.id.student_name);
-                    View class_sec= view.findViewById(R.id.class_section);
-                    View tab_host= view.findViewById(R.id.tab_host);
-
-                    Pair<View, String> pair1 = Pair.create(student_image, student_image.getTransitionName());
-                    Pair<View, String> pair2 = Pair.create(name, name.getTransitionName());
-                    Pair<View, String> pair3 = Pair.create(status, status.getTransitionName());
-                    Pair<View, String> pair4 = Pair.create(class_sec, class_sec.getTransitionName());
-                    Pair<View, String> pair5 = Pair.create(tab_host, tab_host.getTransitionName());
-
-                    ActivityOptionsCompat options = ActivityOptionsCompat.
-                            makeSceneTransitionAnimation(getActivity(), pair1, pair2, pair3,pair4,pair5);
-                    startActivity(intent, options.toBundle());
-                }
-                else {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//
+//                    View student_image  =  view.findViewById(R.id.student_image);
+//                    View status =  view.findViewById(R.id.status);
+//                    View name= view.findViewById(R.id.student_name);
+//                    View class_sec= view.findViewById(R.id.class_section);
+//                    View tab_host= view.findViewById(R.id.tab_host);
+//
+//                    Pair<View, String> pair1 = Pair.create(student_image, student_image.getTransitionName());
+//                    Pair<View, String> pair2 = Pair.create(name, name.getTransitionName());
+//                    Pair<View, String> pair3 = Pair.create(status, status.getTransitionName());
+//                    Pair<View, String> pair4 = Pair.create(class_sec, class_sec.getTransitionName());
+//                    Pair<View, String> pair5 = Pair.create(tab_host, tab_host.getTransitionName());
+//
+//                    ActivityOptionsCompat options = ActivityOptionsCompat.
+//                            makeSceneTransitionAnimation(getActivity(), pair1, pair2, pair3,pair4,pair5);
+//                    startActivity(intent, options.toBundle());
+//                }
+//                else {
                     startActivity(intent);
-                }
+
             }
         });
 
