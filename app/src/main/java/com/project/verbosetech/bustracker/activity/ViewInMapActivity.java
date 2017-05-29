@@ -36,13 +36,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.fragments.BusTrackFragment;
 import com.project.verbosetech.bustracker.fragments.Calender_Fragment;
 import com.project.verbosetech.bustracker.fragments.ContactsFragment;
 import com.project.verbosetech.bustracker.others.CircleTransform;
 import com.project.verbosetech.bustracker.others.GoogleMapsPath;
 import com.project.verbosetech.bustracker.others.PrefManager;
-import com.project.verbosetech.bustracker.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +69,8 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
     private LocationRequest mLocationRequest;
     private double currentLatitude;
     private double currentLongitude;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

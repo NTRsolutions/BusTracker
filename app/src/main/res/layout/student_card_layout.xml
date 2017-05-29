@@ -5,10 +5,6 @@
     android:layout_height="wrap_content"
     android:weightSum="100">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar9">
-    </include>
-
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
@@ -22,7 +18,6 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_below="@+id/toolbar9"
         android:transitionName="@string/fragment_image_trans"
         android:layout_weight="40"
         />

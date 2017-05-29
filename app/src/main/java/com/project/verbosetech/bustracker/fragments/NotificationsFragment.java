@@ -1,7 +1,7 @@
 package com.project.verbosetech.bustracker.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,10 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.models.Notifications;
 import com.project.verbosetech.bustracker.others.NotificationRecycleGrid;
-import com.project.verbosetech.bustracker.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ import java.util.List;
  * Created by this pc on 11-05-17.
  */
 
-public class NotificationsFragment extends Fragment {
+public class NotificationsFragment extends DialogFragment {
 
     private View view;
     private RecyclerView.LayoutManager layoutManager;

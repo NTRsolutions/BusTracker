@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.others.ConnectionDetector;
+import com.project.verbosetech.bustracker.others.PrefManager;
 
 /**
  * Created by this pc on 12-05-17.
@@ -25,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
     ImageView logo;
     LinearLayout linearLayout;
     ConnectionDetector connectionDetector;
+    PrefManager pref;
 
     @Override
     protected void onStart() {
@@ -38,7 +40,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.splash_screen_layout);
         logo=(ImageView)findViewById(R.id.app_icon);
         linearLayout=(LinearLayout)findViewById(R.id.layout);
-
+        pref=new PrefManager(getApplicationContext());
+        pref.setNotifyStatus(null);
         animation1 = AnimationUtils.loadAnimation(this,R.anim.shake_animation);
         animation2 = AnimationUtils.loadAnimation(this,R.anim.animate_layout);
         linearLayout.startAnimation(animation1);

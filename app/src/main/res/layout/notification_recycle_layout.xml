@@ -10,6 +10,7 @@
     android:layout_marginLeft="12dp"
     android:clickable="true"
 
+
     >
 
     <android.support.v7.widget.RecyclerView

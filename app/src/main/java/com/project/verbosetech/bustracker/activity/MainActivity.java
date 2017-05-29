@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // if user select the current navigation menu again, don't do anything
         // just close the navigation drawer
-        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) == getCurrentFragment()) {
+        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
             drawer.closeDrawers();
             return;
         }
@@ -182,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 5:
                 ContactFragment contactFragment = new ContactFragment();
                 return contactFragment;
+
             default:
                 return new HomeFragment();
         }
@@ -280,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // This code loads home fragment when back key is pressed
         // when user is in other fragment than home
-        if (shouldLoadHomeFragOnBackPress) {
+        if (shouldLoadHomeFragOnBackPress&&prefManager.getNotifyStatus() == null) {
             // checking if user is on other navigation menu
             // rather than home
             if (navItemIndex != 0) {
@@ -289,10 +290,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 loadHomeFragment();
                 return;
             }
+            super.onBackPressed();
         }
-        prefManager.setNotifyStatus(null);
 
-        super.onBackPressed();
+        else {
+            getSupportFragmentManager().popBackStack();
+            prefManager.setNotifyStatus(null);
+            Log.e("Null", "Null");
+        }
+
     }
 
     @Override
@@ -307,19 +313,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (item.getItemId() == R.id.action_message) {
 
             Fragment fragment1 = new NotificationsFragment();
-            getSupportFragmentManager().beginTransaction().attach(fragment1).commit();
             if (prefManager.getNotifyStatus() == null) {
-                getSupportFragmentManager().beginTransaction().show(fragment1).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.frame, fragment1, CURRENT_TAG).addToBackStack(CURRENT_TAG).commit();
                 prefManager.setNotifyStatus("1");
                 Log.e("1", "1");
             } else {
-                getSupportFragmentManager().beginTransaction().hide(fragment1).commit();
+                getSupportFragmentManager().popBackStack();
                 prefManager.setNotifyStatus(null);
                 Log.e("Null", "Null");
             }
-
         }
-
 
         return true;
     }
@@ -349,15 +352,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    protected int getFragmentCount() {
-        return getSupportFragmentManager().getBackStackEntryCount();
-    }
-
-    private Fragment getFragmentAt(int index) {
-        return getFragmentCount() > 0 ? getSupportFragmentManager().findFragmentByTag(Integer.toString(index)) : null;
-    }
-
-    protected Fragment getCurrentFragment() {
-        return getFragmentAt(getFragmentCount() - 1);
+    @Override
+    protected void onStop() {
+        prefManager.setNotifyStatus(null);
+        super.onStop();
     }
 }
