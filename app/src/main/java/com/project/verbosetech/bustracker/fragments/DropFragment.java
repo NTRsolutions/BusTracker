@@ -55,7 +55,7 @@ import java.util.List;
 public class DropFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,LocationListener {
 
     private View view;
-    Button setReminder,no_button;
+    Button setReminder,no_button,yes_button;
     AlertDialog alertDialog;
     private Integer THRESHOLD = 2;
     private DelayAutoCompleteTextView geo_autocomplete;
@@ -99,8 +99,17 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
         fm = (FrameLayout) view.findViewById(R.id.layout21);
         setReminder=(Button)view.findViewById(R.id.drop_reminder);
         no_button=(Button)view.findViewById(R.id.no);
+        yes_button=(Button)view.findViewById(R.id.yes);
         linearLayout=(LinearLayout)view.findViewById(R.id.layout);
         relativeLayout=(RelativeLayout)view.findViewById(R.id.layout2);
+
+        yes_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                linearLayout.setVisibility(View.GONE);
+                Toast.makeText(getActivity(),"To be implemented",Toast.LENGTH_LONG).show();
+            }
+        });
 
         no_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,9 +170,9 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
                     Toast.makeText(getActivity(),currentLatitude+" ,"+currentLongitude,Toast.LENGTH_LONG).show();
                     search(Map,new LatLng(currentLatitude,currentLongitude));
 
-                    GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,new LatLng(currentLatitude,currentLongitude),new LatLng(26.2520944,78.1794855));
+                    GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,new LatLng(currentLatitude,currentLongitude),new LatLng(currentLatitude+0.005,currentLongitude+0.0005));
 
-                    Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                    Map.addMarker(new MarkerOptions().position(new LatLng(currentLatitude+0.005,currentLongitude+0.0005)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
             }
         });
@@ -175,8 +184,8 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
                         search(Map, getLocationFromAddress(textView.getText().toString()));
                         Log.e("Addresssss", textView.getText().toString());
 
-                        GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,getLocationFromAddress(textView.getText().toString()),new LatLng(26.2520944,78.1794855));
-                        Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                        GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,getLocationFromAddress(textView.getText().toString()),new LatLng(currentLatitude+0.005,currentLongitude+0.0005));
+                        Map.addMarker(new MarkerOptions().position(new LatLng(currentLatitude+0.005,currentLongitude+0.0005)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
                         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(fm.getWindowToken(), 0);}

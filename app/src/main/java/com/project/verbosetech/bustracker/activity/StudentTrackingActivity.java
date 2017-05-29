@@ -1,6 +1,5 @@
 package com.project.verbosetech.bustracker.activity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -42,7 +41,6 @@ public class StudentTrackingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(StudentTrackingActivity.this, MainActivity.class));
                 finish();
             }
         });

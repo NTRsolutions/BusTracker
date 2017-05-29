@@ -42,6 +42,7 @@ import com.project.verbosetech.bustracker.fragments.BusTrackFragment;
 import com.project.verbosetech.bustracker.fragments.Calender_Fragment;
 import com.project.verbosetech.bustracker.fragments.ContactsFragment;
 import com.project.verbosetech.bustracker.others.CircleTransform;
+import com.project.verbosetech.bustracker.others.GoogleMapPath;
 import com.project.verbosetech.bustracker.others.GoogleMapsPath;
 import com.project.verbosetech.bustracker.others.PrefManager;
 
@@ -89,8 +90,6 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(ViewInMapActivity.this, StudentTrackingActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -100,6 +99,7 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
             public void onClick(View view) {
 
                 startActivity(new Intent(ViewInMapActivity.this,MainActivity.class));
+                Toast.makeText(getApplicationContext(),"To be implemented",Toast.LENGTH_LONG).show();
             }
         });
 
@@ -213,9 +213,13 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
 
                     search(Map,new LatLng(26.2520000,78.1889999));
 
-                    GoogleMapsPath googleMapsPath=new GoogleMapsPath(ViewInMapActivity.this,Map,new LatLng(26.2520000,78.1889999),new LatLng(26.2520944,78.1794855));
+                    GoogleMapPath googleMapPath=new GoogleMapPath(ViewInMapActivity.this,Map,new LatLng(26.2520000,78.1889999),new LatLng(26.2520944,78.1794855));
 
-                    Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                    Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Bus").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+
+                    GoogleMapsPath googleMapsPath=new GoogleMapsPath(ViewInMapActivity.this,Map,new LatLng(26.2520944,78.1794855),new LatLng(26.2530944,78.1798855));
+
+                    Map.addMarker(new MarkerOptions().position(new LatLng(26.2530944,78.1798855)).title("Home").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
 
 
 

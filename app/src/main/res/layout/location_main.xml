@@ -10,6 +10,8 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:background="@color/colorPrimary"
             android:id="@+id/tab_bar"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             >
 
             <Button

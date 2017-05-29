@@ -42,7 +42,8 @@
             android:textColor="@color/splashTitle"
             android:minHeight="30dp"
             android:layout_marginRight="10dp"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:id="@+id/yes"/>
 
         <Button
             android:layout_width="0dp"

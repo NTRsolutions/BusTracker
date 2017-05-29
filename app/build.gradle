@@ -68,6 +68,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     releaseCompile 'com.google.firebase:firebase-crash:10.2.0'
     compile 'com.google.android.gms:play-services-analytics:10.2.4'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     testCompile 'junit:junit:4.12'
 }
 

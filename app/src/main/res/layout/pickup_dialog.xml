@@ -16,7 +16,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/home_card_background"
         android:id="@+id/title_bar"
         android:padding="5dp"
         android:gravity="center">
