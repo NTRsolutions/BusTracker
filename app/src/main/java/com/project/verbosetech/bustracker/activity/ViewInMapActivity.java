@@ -141,8 +141,6 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
                     tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_orange_24dp);
                     pref.setTabNumber(2);}
 
-                Intent intent = new Intent(ViewInMapActivity.this, StudentTrackingActivity.class);
-                startActivity(intent);
                 finish();
             }
 

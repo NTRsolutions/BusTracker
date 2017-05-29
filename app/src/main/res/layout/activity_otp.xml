@@ -14,7 +14,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/title_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             android:background="@color/colorPrimary"
             app:contentInsetLeft="0dp"
             app:contentInsetStart="0dp"

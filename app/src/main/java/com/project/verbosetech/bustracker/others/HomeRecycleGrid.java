@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.project.verbosetech.bustracker.models.Student;
 import com.project.verbosetech.bustracker.R;
+import com.project.verbosetech.bustracker.models.Student;
 
 import java.util.List;
 

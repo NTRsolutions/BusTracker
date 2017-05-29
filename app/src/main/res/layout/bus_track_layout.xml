@@ -97,7 +97,7 @@
         android:layout_marginRight="5dp"
         android:layout_weight="10"
         android:gravity="center_horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
 
         >
 
@@ -150,8 +150,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/dot1"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/circle_white"
+                android:src="@drawable/circle_white"
                 />
+
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -166,7 +167,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="51dp"
             android:orientation="vertical"
             >
 
@@ -284,7 +285,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/textheights"
             android:text="St. Xavier's High School New Delhi"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="18dp"
             android:textSize="@dimen/textSize"
             android:textStyle="bold"/>
 
@@ -292,7 +293,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/textheights"
             android:text="Old Street Circle ,New Delhi"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:textSize="@dimen/textSize"
             android:textStyle="bold"/>
 

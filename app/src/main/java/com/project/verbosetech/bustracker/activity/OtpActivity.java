@@ -21,7 +21,7 @@ public class OtpActivity extends AppCompatActivity {
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.otp);
+        setContentView(R.layout.activity_otp);
         fab=(FloatingActionButton)findViewById(R.id.fab2);
         toolbar=(Toolbar)findViewById(R.id.title_bar);
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white_24dp);

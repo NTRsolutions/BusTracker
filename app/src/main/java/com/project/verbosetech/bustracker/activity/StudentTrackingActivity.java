@@ -86,5 +86,11 @@ public class StudentTrackingActivity extends AppCompatActivity {
         pref.setNotifyStatus(null);
         super.onStop();
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }
 

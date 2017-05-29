@@ -3,22 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/layout1"
-        android:weightSum="100">
+        android:weightSum="100"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp">
 
     <ImageView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_airline_seat_recline_extra_black_24dp"
+        app:srcCompat="@drawable/ic_driver"
         android:id="@+id/driver_image"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_weight="10"/>
 
     <TextView
@@ -26,7 +28,6 @@
         android:layout_height="wrap_content"
         android:text="Driver"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="12dp"
         android:layout_weight="30"
         />
 
@@ -35,7 +36,6 @@
         android:layout_height="wrap_content"
         android:text="Mahesh Prajapati"
         android:id="@+id/driver_name"
-        android:layout_marginTop="12dp"
         android:layout_weight="60"
         android:textColor="@color/splashTitle"
         android:textSize="16dp"
@@ -49,23 +49,25 @@
         android:orientation="horizontal"
         android:id="@+id/layout2"
         android:weightSum="100"
-        android:layout_below="@+id/layout1">
+        android:layout_below="@+id/layout1"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        >
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_directions_bus_black_24dp"
+            app:srcCompat="@drawable/ic_bus_num"
             android:id="@+id/Bus_image"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="10"/>
+            android:layout_weight="10"
+            />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Bus Num"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="12dp"
             android:layout_weight="30"
             />
 
@@ -74,7 +76,6 @@
             android:layout_height="wrap_content"
             android:text="DL 20 AA 5887"
             android:id="@+id/bus_number"
-            android:layout_marginTop="12dp"
             android:layout_weight="60"
             android:textColor="@color/splashTitle"
             android:textSize="16dp"
@@ -89,23 +90,26 @@
         android:orientation="horizontal"
         android:id="@+id/layout3"
         android:weightSum="100"
-        android:layout_below="@+id/layout2">
+        android:layout_below="@+id/layout2"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+
+        >
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_airline_seat_recline_extra_black_24dp"
+            app:srcCompat="@drawable/ic_licence"
             android:id="@+id/licence_image"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="10"/>
+            android:layout_weight="10"
+            />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Licence"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="12dp"
             android:layout_weight="30"
             />
 
@@ -114,7 +118,6 @@
             android:layout_height="wrap_content"
             android:text="BS5521-5231"
             android:id="@+id/licence_num"
-            android:layout_marginTop="12dp"
             android:layout_weight="60"
             android:textColor="@color/splashTitle"
             android:textSize="16dp"
@@ -128,23 +131,25 @@
         android:orientation="horizontal"
         android:id="@+id/layout4"
         android:weightSum="100"
-        android:layout_below="@+id/layout3">
+        android:layout_below="@+id/layout3"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        >
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_person_black_24dp"
+            app:srcCompat="@drawable/ic_helper"
             android:id="@+id/helper_image"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="10"/>
+            android:layout_weight="10"
+            />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Helper"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="12dp"
             android:layout_weight="30"
             />
 
@@ -153,7 +158,6 @@
             android:layout_height="wrap_content"
             android:text="Dharmesh Raju"
             android:id="@+id/helper_name"
-            android:layout_marginTop="12dp"
             android:layout_weight="60"
             android:textColor="@color/splashTitle"
             android:textSize="16dp"
@@ -167,23 +171,24 @@
         android:orientation="horizontal"
         android:id="@+id/layout5"
         android:weightSum="100"
-        android:layout_below="@+id/layout4">
+        android:layout_below="@+id/layout4"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        >
 
         <ImageView
+            android:id="@+id/contact_image"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_local_phone_black_24dp"
-            android:id="@+id/contact_image"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="10"/>
+            android:layout_weight="10"
+            app:srcCompat="@drawable/ic_contact" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Contact"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="12dp"
             android:layout_weight="30"
             />
 
@@ -192,7 +197,6 @@
             android:layout_height="wrap_content"
             android:text="+91 903 335 6708"
             android:id="@+id/contact_number"
-            android:layout_marginTop="12dp"
             android:layout_weight="60"
             android:textColor="@color/splashTitle"
             android:textSize="16dp"
@@ -203,9 +207,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_local_phone_black_24dp"
+        app:srcCompat="@drawable/ic_local_phone_brown_24dp"
         android:layout_alignBottom="@+id/layout5"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
         />
 
     <LinearLayout
@@ -214,24 +219,26 @@
         android:orientation="horizontal"
         android:id="@+id/layout6"
         android:weightSum="100"
-        android:layout_below="@id/layout5">
+        android:layout_below="@id/layout5"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        >
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_airline_seat_recline_extra_black_24dp"
+            app:srcCompat="@drawable/ic_school"
             android:id="@+id/school_image"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_weight="10"
-            android:layout_marginBottom="10dp"/>
+            />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="School"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="12dp"
             android:layout_weight="30"
             />
 
@@ -240,7 +247,6 @@
             android:layout_height="wrap_content"
             android:text="02632 233 255"
             android:id="@+id/school_num"
-            android:layout_marginTop="12dp"
             android:layout_weight="60"
             android:textColor="@color/splashTitle"
             android:textSize="16dp"
@@ -251,10 +257,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_local_phone_black_24dp"
+        app:srcCompat="@drawable/ic_local_phone_brown_24dp"
         android:layout_alignBottom="@+id/layout6"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="8dp"
+        android:layout_marginRight="10dp"
         />
 
 </RelativeLayout>
