@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.models.Student;
 
@@ -88,6 +89,7 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
                 .load("http://media.gettyimages.com/photos/male-high-school-student-portrait-picture-id98680202?s=170667a")
                 .dontAnimate()
                 .bitmapTransform(new RoundedCornersTransformation(context,10, 0))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(image);
     }
 

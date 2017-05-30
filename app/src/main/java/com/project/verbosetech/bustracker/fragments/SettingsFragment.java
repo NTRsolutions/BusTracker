@@ -21,7 +21,7 @@ import com.project.verbosetech.bustracker.R;
 public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     private View view;
-    TextView select,pickup_change,drop_change;
+    TextView select,pickup_change,drop_change,unselect;
     CheckBox checkBox1,checkBox2,checkBox3,checkBox4;
     AlertDialog alertDialog;
     LayoutInflater li;
@@ -39,8 +39,10 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         checkBox4=(CheckBox)view.findViewById(R.id.leftbox);
         pickup_change=(TextView)view.findViewById(R.id.pickup_change);
         drop_change=(TextView)view.findViewById(R.id.drop_change);
+        unselect=(TextView)view.findViewById(R.id.unselect_all);
 
         select.setOnClickListener(this);
+        unselect.setOnClickListener(this);
         pickup_change.setOnClickListener(this);
         drop_change.setOnClickListener(this);
         return view;
@@ -57,7 +59,18 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 checkBox2.setChecked(true);
                 checkBox3.setChecked(true);
                 checkBox4.setChecked(true);
+                select.setVisibility(View.GONE);
+                unselect.setVisibility(View.VISIBLE);
+                break;
 
+            case R.id.unselect_all:
+
+                checkBox1.setChecked(false);
+                checkBox2.setChecked(false);
+                checkBox3.setChecked(false);
+                checkBox4.setChecked(false);
+                unselect.setVisibility(View.GONE);
+                select.setVisibility(View.VISIBLE);
                 break;
 
             case R.id.pickup_change:
@@ -75,7 +88,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                         double cal_dist,d;
                         String a[]=distance.getText().toString().split(" ");
                         d=Double.parseDouble(a[0]);
-                        cal_dist=d+1;
+                        cal_dist=d+0.5;
                         distance.setText(cal_dist+" km");
 
                     }
@@ -89,7 +102,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                         String a[]=distance.getText().toString().split(" ");
                         d=Double.parseDouble(a[0]);
                         if(d>=1.0)
-                            cal_dist=d-1;
+                            cal_dist=d-0.5;
                         distance.setText(cal_dist+" km");
 
                     }
@@ -124,7 +137,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                         double cal_dist,d;
                         String a[]=distance1.getText().toString().split(" ");
                         d=Double.parseDouble(a[0]);
-                        cal_dist=d+1;
+                        cal_dist=d+0.5;
                         distance1.setText(cal_dist+" km");
 
                     }
@@ -138,7 +151,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                         String a[]=distance1.getText().toString().split(" ");
                         d=Double.parseDouble(a[0]);
                         if(d>=1.0)
-                            cal_dist=d-1;
+                            cal_dist=d-0.5;
                         distance1.setText(cal_dist+" km");
 
                     }

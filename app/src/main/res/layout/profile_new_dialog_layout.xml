@@ -4,9 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home_card"
-    app:cardCornerRadius="10dp"
-    app:cardUseCompatPadding="true"
-    app:cardElevation="6dp"
+    style="@style/CardViewStyle"
     >
 
     <RelativeLayout
@@ -14,36 +12,34 @@
         android:layout_height="match_parent"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/title_bar"
             android:background="@drawable/home_card_background"
             android:padding="8dp"
             android:elevation="10dp"
-            android:orientation="horizontal"
-            android:weightSum="100"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
 
             <ImageView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/img_profile"
                 android:scaleType="fitXY"
                 android:background="@drawable/profile_upload_photo"
                 app:srcCompat="@drawable/ic_photo_camera_blue_24dp"
                 android:padding="25dp"
-                android:layout_weight="33"
                 />
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="62"
-                android:layout_gravity="center_vertical">
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/img_profile"
+                android:layout_toLeftOf="@+id/edit">
 
             <EditText
                 android:layout_width="match_parent"
@@ -56,8 +52,9 @@
                 android:textSize="15dp"
                 android:layout_marginLeft="15dp"
                 android:hint="Name"
-                android:backgroundTint="#FFF"
                 android:layout_toLeftOf="@+id/edit"
+                android:backgroundTint="#FFF"
+                android:theme="@style/MyEditTextTheme"
                 />
             <EditText
                 android:layout_width="match_parent"
@@ -71,6 +68,7 @@
                 android:backgroundTint="#FFF"
                 android:layout_toLeftOf="@+id/edit"
                 android:textSize="13sp"
+                android:theme="@style/MyEditTextTheme"
                 />
 
             </LinearLayout>
@@ -83,7 +81,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_weight="3"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -103,7 +101,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:hint="Contact(We'll send OTP to verify)"
-            android:textSize="15dp"
+            android:textSize="14sp"
             android:backgroundTint="#7d7d7d"
             android:layout_marginRight="30dp"/>
 
@@ -125,12 +123,17 @@
             android:layout_below="@+id/contact_number"
             android:layout_toRightOf="@+id/mail_image"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:hint="Mail"
-            android:textSize="15dp"
+            android:textSize="14dp"
             android:backgroundTint="#7d7d7d"
-            android:layout_marginBottom="20dp"
             android:layout_marginRight="25dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@+id/email_add"></View>
+
 
 
 

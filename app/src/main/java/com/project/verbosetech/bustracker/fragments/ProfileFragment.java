@@ -55,6 +55,7 @@ public class ProfileFragment extends Fragment {
 
                 LayoutInflater li = LayoutInflater.from(getActivity());
                 View promptsView = li.inflate(R.layout.profile_new_dialog_layout, null);
+                promptsView.setPadding(0,0,0,0);
                 ImageView edit=(ImageView)promptsView.findViewById(R.id.edit);
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override

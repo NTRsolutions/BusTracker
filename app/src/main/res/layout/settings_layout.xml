@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
+
 <RelativeLayout
 
     android:layout_height="match_parent"
@@ -7,6 +11,7 @@
     android:paddingTop="10dp"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
+    android:paddingBottom="15dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -101,6 +106,19 @@
         android:textColor="@color/colorAccent"
         android:textSize="15dp"
         android:id="@+id/select_all"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unselect all"
+        android:layout_below="@+id/separator"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:textSize="15dp"
+        android:id="@+id/unselect_all"
+        android:visibility="gone"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -208,3 +226,5 @@
 
 
 </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>

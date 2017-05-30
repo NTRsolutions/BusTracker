@@ -131,7 +131,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
                         double cal_dist,d;
                         String a[]=distance.getText().toString().split(" ");
                         d=Double.parseDouble(a[0]);
-                        cal_dist=d+1;
+                        cal_dist=d+0.5;
                         distance.setText(cal_dist+" km");
 
                     }
@@ -145,7 +145,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
                         String a[]=distance.getText().toString().split(" ");
                         d=Double.parseDouble(a[0]);
                         if(d>=1.0)
-                        cal_dist=d-1;
+                        cal_dist=d-0.5;
                         distance.setText(cal_dist+" km");
 
                     }
