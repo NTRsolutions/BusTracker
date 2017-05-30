@@ -31,7 +31,7 @@
             android:orientation="horizontal"
             android:id="@+id/name_layout"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="145dp">
+            android:layout_marginLeft="130dp">
 
         <TextView
             android:layout_width="0dp"
@@ -74,7 +74,7 @@
             android:text="Class 10th B Division"
             android:layout_below="@+id/name_layout"
             android:textSize="13dp"
-            android:layout_marginLeft="145dp"
+            android:layout_marginLeft="130dp"
             android:transitionName="@string/activity_text_trans"/>
 
     </RelativeLayout>
@@ -101,8 +101,8 @@
         android:layout_gravity="bottom"/>
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/student_image"
         android:src="@drawable/image_bckgrnd"
         app:layout_anchor="@+id/name_image_layout"
