@@ -1,12 +1,16 @@
 package com.project.verbosetech.bustracker.fragments;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDelegate;
 import android.text.Editable;
@@ -73,6 +77,8 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
     private double currentLongitude;
 
     private static final LatLng MOUNTAIN_VIEW = new LatLng(37.4, -122.1);
+    private static final int MY_PERMISSION_REQUEST_READ_FINE_LOCATION= 111;
+
 
     FrameLayout fm;
 
@@ -256,6 +262,34 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
+
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission( getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},
+                        MY_PERMISSION_REQUEST_READ_FINE_LOCATION);
+
+                // MY_PERMISSION_REQUEST_READ_FINE_LOCATION is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
 
         try {
 

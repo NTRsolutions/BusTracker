@@ -20,7 +20,8 @@
             android:adjustViewBounds="true"
             android:elevation="10dp"
             android:scaleType="fitXY"
-            android:src="@drawable/student" />
+            android:src="@drawable/student"
+            android:background="@drawable/shadow_rect"/>
 
         <LinearLayout
             android:id="@+id/student_name_layout"

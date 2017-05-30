@@ -88,7 +88,7 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
         Glide.with(context)
                 .load("http://media.gettyimages.com/photos/male-high-school-student-portrait-picture-id98680202?s=170667a")
                 .dontAnimate()
-                .bitmapTransform(new RoundedCornersTransformation(context,10, 0))
+                .bitmapTransform(new RoundedCornersTransformation(context,10, 0, RoundedCornersTransformation.CornerType.TOP))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(image);
     }

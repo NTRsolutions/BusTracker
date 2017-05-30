@@ -1,18 +1,20 @@
 package com.project.verbosetech.bustracker.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -70,8 +72,34 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
     private double currentLatitude;
     private double currentLongitude;
 
+    private static final int MY_PERMISSION_REQUEST_READ_FINE_LOCATION= 111;
 
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+        switch (requestCode)
+        {
+            case MY_PERMISSION_REQUEST_READ_FINE_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+
+                }
+            else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+            }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,7 +184,49 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
         });
         setupTabIcons();
 
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission( getApplicationContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},
+                        MY_PERMISSION_REQUEST_READ_FINE_LOCATION);
+
+                // MY_PERMISSION_REQUEST_READ_FINE_LOCATION is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+
+        //                    }
+        googleApiClient = new GoogleApiClient.Builder(ViewInMapActivity.this)
+                // The next two lines tell the new client that “this” current class will handle connection stuff
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                //fourth line adds the LocationServices API endpoint from GooglePlayServices
+                .addApi(LocationServices.API)
+                .build();
+
+        // Create the LocationRequest object
+        mLocationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(10 * 1000)        // 10 seconds, in milliseconds
+                .setFastestInterval(1 * 1000); // 1 second, in milliseconds
 
         try {
 
@@ -232,6 +302,10 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
+
     }
 
     private void setupTabIcons() {
@@ -349,25 +423,6 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
                 .build();                   // Creates a CameraPosition from the builder
         Map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-    }
-
-    public LatLng getLocationFromAddress(String strAddress){
-
-        Geocoder coder = new Geocoder(getApplicationContext());
-        List<Address> address;
-        Address location=null;
-
-        try {
-            address = coder.getFromLocationName(strAddress,5);
-            if (address==null) {
-                return null;
-            }
-            location=address.get(0);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return new LatLng(location.getLatitude(),location.getLongitude());
     }
 
     @Override
