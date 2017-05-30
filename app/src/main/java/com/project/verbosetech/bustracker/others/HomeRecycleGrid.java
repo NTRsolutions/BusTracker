@@ -25,6 +25,7 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
     private List<Student> dataSet ;
     public Context context=null;
     VenueAdapterClickCallbacks venueAdapterClickCallbacks;
+    String image_address = "http://media.gettyimages.com/photos/male-high-school-student-portrait-picture-id98680202?s=170667a";
 
     public class MyHolder extends RecyclerView.ViewHolder
     {
@@ -76,6 +77,14 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
         class_sec.setText(dataSet.get(position).getClass_section());
         status.setText(dataSet.get(position).getStatus());
 
+        Glide.with(context).load(image_address)
+                .dontAnimate()
+                .centerCrop()
+                .override(500,500)
+                .bitmapTransform(new RoundedCornersTransformation(context,10,0, RoundedCornersTransformation.CornerType.TOP))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(image);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,12 +94,6 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
             }
         });
 
-        Glide.with(context)
-                .load("http://media.gettyimages.com/photos/male-high-school-student-portrait-picture-id98680202?s=170667a")
-                .dontAnimate()
-                .bitmapTransform(new RoundedCornersTransformation(context,10, 0, RoundedCornersTransformation.CornerType.TOP))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(image);
     }
 
     @Override
