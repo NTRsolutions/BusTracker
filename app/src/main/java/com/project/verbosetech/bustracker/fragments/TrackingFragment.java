@@ -19,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.activity.ViewInMapActivity;
 import com.project.verbosetech.bustracker.others.CircleTransform;
+import com.project.verbosetech.bustracker.others.PrefManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class TrackingFragment extends Fragment {
     private ViewPager viewPager;
     TextView viewInMap,name,class_sec,status;
     SupportMapFragment map;
+    PrefManager pref;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class TrackingFragment extends Fragment {
         name=(TextView) view.findViewById(R.id.student_name);
         class_sec=(TextView) view.findViewById(R.id.class_section);
         status=(TextView) view.findViewById(R.id.status);
+        pref=new PrefManager(getActivity());
 
 
         viewInMap.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +85,14 @@ public class TrackingFragment extends Fragment {
         tabLayout = (TabLayout)  view.findViewById(R.id.tab_host);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+
+//        if(pref.getTabNumber()!=0)
+//        {
+//            TabLayout.Tab tab = tabLayout.getTabAt(pref.getTabNumber()-1);
+//            tab.select();
+//            pref.setTabNumber(0);
+//
+//        }
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

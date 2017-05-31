@@ -157,18 +157,18 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
                     tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_orange_24dp);
                     tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_grey_24dp);
                     tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_grey_24dp);
-                    pref.setTabNumber(0);
+                    pref.setTabNumber(1);
                 }
                 if(tabLayout.getSelectedTabPosition()==1){
                     tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_grey_24dp);
                     tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_orange_24dp);
                     tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_grey_24dp);
-                    pref.setTabNumber(1);}
+                    pref.setTabNumber(2);}
                 if(tabLayout.getSelectedTabPosition()==2){
                     tabLayout.getTabAt(0).setIcon(R.drawable.ic_query_builder_grey_24dp);
                     tabLayout.getTabAt(1).setIcon(R.drawable.ic_local_phone_grey_24dp);
                     tabLayout.getTabAt(2).setIcon(R.drawable.ic_date_range_orange_24dp);
-                    pref.setTabNumber(2);}
+                    pref.setTabNumber(3);}
 
                 finish();
             }
@@ -180,6 +180,8 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+
+
 
             }
         });
