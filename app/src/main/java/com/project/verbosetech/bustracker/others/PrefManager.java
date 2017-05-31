@@ -91,6 +91,12 @@ public class PrefManager {
         editor.commit();
     }
 
+    public void setNotify(int number) {
+
+        editor.putInt("notify", number);
+        editor.commit();
+    }
+
 
     public String getNotifyStatus() {
         return pref.getString("status", null);
@@ -118,6 +124,10 @@ public class PrefManager {
 
     public int getTabNumber() {
         return pref.getInt("number", 0);
+    }
+
+    public int getNotify() {
+        return pref.getInt("notify", 0);
     }
 
 

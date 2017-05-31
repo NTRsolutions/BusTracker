@@ -107,9 +107,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // initializing navigation menu
         setUpNavigationView();
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null && prefManager.getNotify()==0) {
             navItemIndex = 0;
             CURRENT_TAG = TAG_HOME;
+
+            loadHomeFragment();
+        }
+
+        else
+        {
+            navItemIndex = 2;
+            CURRENT_TAG = TAG_LOCATION;
+            prefManager.setNotify(0);
             loadHomeFragment();
         }
     }

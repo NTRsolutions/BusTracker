@@ -126,8 +126,9 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(ViewInMapActivity.this,MainActivity.class));
-                Toast.makeText(getApplicationContext(),"To be implemented",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(ViewInMapActivity.this,MainActivity.class);
+                pref.setNotify(1);
+                startActivity(intent);
             }
         });
 
