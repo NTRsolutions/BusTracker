@@ -98,14 +98,14 @@
             android:layout_toLeftOf="@+id/gps_search"
             />
 
-        <!--<ImageView-->
-        <!--android:id="@+id/geo_autocomplete_clear"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:srcCompat="@drawable/ic_highlight_off_black_24dp"-->
-        <!--android:visibility="visible"-->
-        <!--android:layout_marginRight="12dp"-->
-        <!--android:layout_alignParentRight="true"-->
+        <ImageView
+        android:id="@+id/geo_autocomplete_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_highlight_off_black_24dp"
+        android:visibility="gone"
+        android:layout_marginRight="12dp"
+        android:layout_alignParentRight="true"></ImageView>
 
         <ImageView
             android:layout_height="wrap_content"
