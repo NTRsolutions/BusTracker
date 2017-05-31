@@ -169,7 +169,7 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
                 }
             }
         });
-        
+
         gps_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

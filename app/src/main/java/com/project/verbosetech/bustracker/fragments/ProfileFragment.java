@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -83,6 +84,8 @@ public class ProfileFragment extends Fragment {
                 alertDialogBuilder.setView(promptsView);
                 alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
+                alertDialog.getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
             }
         });

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -109,6 +110,8 @@ public class ProfileRecycleGrid extends RecyclerView.Adapter<ProfileRecycleGrid.
                 alertDialogBuilder.setView(promptsView);
                 alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
+                alertDialog.getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
             }
         });
 
