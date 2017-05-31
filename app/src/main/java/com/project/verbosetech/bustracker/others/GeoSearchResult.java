@@ -26,12 +26,17 @@ public class GeoSearchResult {
 
         for(int i = 1; i < address.getMaxAddressLineIndex(); i++)
         {
-            display_address += address.getAddressLine(i) + ", ";
+            display_address += address.getAddressLine(i) + ",";
         }
 
-        display_address = display_address.substring(0, display_address.length() - 1);
+        if(display_address.charAt(display_address.length()-1)==',')
 
-        Log.e("Featureeeeeee",display_address+"");
+            display_address = display_address.substring(0, display_address.length() - 2);
+        else
+
+            display_address = display_address.substring(0, display_address.length() - 1);
+
+        Log.e("First",display_address+"");
 
 //        array=new String[display_address.length()];
 //        array=display_address.split(",");
@@ -71,13 +76,13 @@ public class GeoSearchResult {
         if(address.getFeatureName() != null)
         {
             display_address += address + ", ";
-            Log.e("Feature_name",address.getFeatureName()+"");
+            Log.e("Second",address.getFeatureName()+"");
         }
 
         for(int i = 0; i < address.getMaxAddressLineIndex(); i++)
         {
             display_address += address.getAddressLine(i);
-            Log.e("Feature",address.getAddressLine(i)+"");
+            Log.e("Third",address.getAddressLine(i)+"");
         }
 
 //        array=new String[display_address.length()];

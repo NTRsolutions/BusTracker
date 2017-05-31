@@ -64,10 +64,9 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
     SupportMapFragment mapFragment;
     private static final LatLng MOUNTAIN_VIEW = new LatLng(37.4, -122.1);
     ImageView gps_search;
-//  private ImageView geo_autocomplete_clear;
+    private ImageView geo_autocomplete_clear;
 
     DelayAutoCompleteTextView textView;
-    LatLng user_latlang;
     GoogleApiClient googleApiClient;
     GoogleMap.OnMyLocationChangeListener myLocationChangeListener;
 
@@ -170,10 +169,18 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
             }
         });
 
-//      geo_autocomplete_clear = (ImageView) view.findViewById(R.id.geo_autocomplete_clear);
+        geo_autocomplete_clear = (ImageView) view.findViewById(R.id.geo_autocomplete_clear);
         geo_autocomplete = (DelayAutoCompleteTextView) view.findViewById(R.id.geo_autocomplete);
         geo_autocomplete.setThreshold(THRESHOLD);
         geo_autocomplete.setAdapter(new GeoAutoCompleteAdapter(getActivity())); // 'this' is activity instance
+
+        geo_autocomplete_clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                geo_autocomplete.setText("");
+            }
+        });
 
         geo_autocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -197,9 +204,9 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.length() > 0) {
-//                    geo_autocomplete_clear.setVisibility(View.VISIBLE);
+                    geo_autocomplete_clear.setVisibility(View.VISIBLE);
                 } else {
-//                    geo_autocomplete_clear.setVisibility(View.GONE);
+                    geo_autocomplete_clear.setVisibility(View.GONE);
                 }
             }
         });

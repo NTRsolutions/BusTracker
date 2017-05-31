@@ -38,21 +38,25 @@
             android:layout_gravity="center_vertical"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
-            android:padding="10dp"
             android:dropDownWidth="match_parent"
             android:dropDownHeight="wrap_content"
             android:layout_toRightOf="@+id/search"
             android:layout_toLeftOf="@+id/gps_search"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="25dp"
+
             />
 
-        <!--<ImageView-->
-            <!--android:id="@+id/geo_autocomplete_clear"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:srcCompat="@drawable/ic_highlight_off_black_24dp"-->
-            <!--android:visibility="visible"-->
-            <!--android:layout_marginRight="12dp"-->
-            <!--android:layout_alignParentRight="true"-->
+        <ImageView
+            android:id="@+id/geo_autocomplete_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_highlight_off_black_24dp"
+            android:visibility="visible"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/gps_search"></ImageView>
 
         <ImageView
             android:layout_height="wrap_content"

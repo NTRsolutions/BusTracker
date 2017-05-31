@@ -78,7 +78,7 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
 
     private static final LatLng MOUNTAIN_VIEW = new LatLng(37.4, -122.1);
     private static final int MY_PERMISSION_REQUEST_READ_FINE_LOCATION= 111;
-
+    private ImageView geo_autocomplete_clear;
 
     FrameLayout fm;
 
@@ -108,6 +108,7 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
         yes_button=(Button)view.findViewById(R.id.yes);
         linearLayout=(LinearLayout)view.findViewById(R.id.layout);
         relativeLayout=(RelativeLayout)view.findViewById(R.id.layout2);
+        geo_autocomplete_clear = (ImageView) view.findViewById(R.id.geo_autocomplete_clear);
 
         yes_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +133,14 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
         geo_autocomplete.setThreshold(THRESHOLD);
         geo_autocomplete.setAdapter(new GeoAutoCompleteAdapter(getActivity())); // 'this' is activity instance
 
+        geo_autocomplete_clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                geo_autocomplete.setText("");
+            }
+        });
+
         geo_autocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -154,21 +163,13 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.length() > 0) {
-//                    geo_autocomplete_clear.setVisibility(View.VISIBLE);
+                    geo_autocomplete_clear.setVisibility(View.VISIBLE);
                 } else {
-//                    geo_autocomplete_clear.setVisibility(View.GONE);
+                    geo_autocomplete_clear.setVisibility(View.GONE);
                 }
             }
         });
-
-//        geo_autocomplete_clear.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                // TODO Auto-generated method stub
-//                geo_autocomplete.setText("");
-//            }
-//        });
-
+        
         gps_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
