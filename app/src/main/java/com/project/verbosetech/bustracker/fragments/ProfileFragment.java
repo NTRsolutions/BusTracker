@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.models.Profile;
+import com.project.verbosetech.bustracker.others.PrefManager;
 import com.project.verbosetech.bustracker.others.ProfileRecycleGrid;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class ProfileFragment extends Fragment {
     List<Profile> profileList;
     ImageView add;
     AlertDialog alertDialog;
+    PrefManager pref;
 
     private static final String urlProfileImg = "https://c.tadst.com/gfx/750w/fatherson.jpg?1";
 
@@ -49,6 +51,7 @@ public class ProfileFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        pref=new PrefManager(getActivity());
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,16 +61,21 @@ public class ProfileFragment extends Fragment {
                 View promptsView = li.inflate(R.layout.profile_new_dialog_layout, null);
                 promptsView.setPadding(0,0,0,0);
                 ImageView edit=(ImageView)promptsView.findViewById(R.id.edit);
-                EditText name=(EditText)promptsView.findViewById(R.id.name);
-                EditText relation=(EditText)promptsView.findViewById(R.id.relation);
-                EditText contact=(EditText)promptsView.findViewById(R.id.contact_number);
-                EditText mail=(EditText)promptsView.findViewById(R.id.email_add);
+                final EditText name=(EditText)promptsView.findViewById(R.id.name);
+                final EditText relation=(EditText)promptsView.findViewById(R.id.relation);
+                final EditText contact=(EditText)promptsView.findViewById(R.id.contact_number);
+                final EditText mail=(EditText)promptsView.findViewById(R.id.email_add);
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
 
+                        pref.setPName(name.getText().toString());
+                        pref.setRelation(relation.getText().toString());
+                        pref.setPContact(contact.getText().toString());
+                        pref.setEmail(mail.getText().toString());
                         alertDialog.dismiss();
+                        getProfileCards();
                     }
                 });
 
@@ -88,6 +96,10 @@ public class ProfileFragment extends Fragment {
         profileList=new ArrayList<>();
         profileList.add(new Profile("Rajesh Gupta",urlProfileImg,"Father","+91 903 335 6708","rajeshgupta@gmail.com"));
         profileList.add(new Profile("Rajesh Gupta",urlProfileImg,"Father","+91 903 335 6708","rajeshgupta@gmail.com"));
+        if(pref.getPName()!=null)
+        {
+            profileList.add(new Profile(pref.getPName(),urlProfileImg,pref.getRelation(),pref.getPContact(),pref.getEmail()));
+        }
         adapter=new ProfileRecycleGrid(profileList,getActivity());
         recyclerView.setAdapter(adapter);
     }

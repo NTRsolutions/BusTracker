@@ -73,7 +73,7 @@ public class PrefManager {
         editor.putString("relation", name);
         editor.commit();
     }
-    
+
     public void setPContact(String name) {
 
         editor.putString("pcontact", name);
