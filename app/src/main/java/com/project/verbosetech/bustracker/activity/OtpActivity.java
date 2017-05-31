@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.project.verbosetech.bustracker.R;
 
@@ -17,6 +18,7 @@ public class OtpActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
     Toolbar toolbar;
+    ImageView back;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -24,8 +26,9 @@ public class OtpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_otp);
         fab=(FloatingActionButton)findViewById(R.id.fab2);
         toolbar=(Toolbar)findViewById(R.id.title_bar);
-        toolbar.setNavigationIcon(R.drawable.ic_keyboard_arrow_left_white_24dp);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        back=(ImageView)toolbar.findViewById(R.id.back_button);
+
+        toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -33,6 +36,7 @@ public class OtpActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

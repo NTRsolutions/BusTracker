@@ -62,6 +62,29 @@ public class PrefManager {
         editor.commit();
     }
 
+    public void setPName(String name) {
+
+        editor.putString("pname", name);
+        editor.commit();
+    }
+
+    public void setRelation(String name) {
+
+        editor.putString("relation", name);
+        editor.commit();
+    }
+    
+    public void setPContact(String name) {
+
+        editor.putString("pcontact", name);
+        editor.commit();
+    }
+    public void setEmail(String name) {
+
+        editor.putString("email", name);
+        editor.commit();
+    }
+
     public void setTabNumber(int number) {
 
         editor.putInt("number", number);
@@ -75,6 +98,22 @@ public class PrefManager {
 
     public String getName() {
         return pref.getString("name", null);
+    }
+
+    public String getPName() {
+        return pref.getString("pname", null);
+    }
+
+    public String getRelation() {
+        return pref.getString("relation", null);
+    }
+
+    public String getPContact() {
+        return pref.getString("pcontact", null);
+    }
+
+    public String getEmail() {
+        return pref.getString("email", null);
     }
 
     public int getTabNumber() {

@@ -28,6 +28,7 @@ public class SplashActivity extends AppCompatActivity {
     ConnectionDetector connectionDetector;
     PrefManager pref;
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -45,6 +46,9 @@ public class SplashActivity extends AppCompatActivity {
         animation1 = AnimationUtils.loadAnimation(this,R.anim.shake_animation);
         animation2 = AnimationUtils.loadAnimation(this,R.anim.animate_layout);
         linearLayout.startAnimation(animation1);
+
+
+
 
         new Handler().postDelayed(new Runnable() {
 

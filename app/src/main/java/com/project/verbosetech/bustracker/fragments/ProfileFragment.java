@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.project.verbosetech.bustracker.R;
@@ -57,9 +58,14 @@ public class ProfileFragment extends Fragment {
                 View promptsView = li.inflate(R.layout.profile_new_dialog_layout, null);
                 promptsView.setPadding(0,0,0,0);
                 ImageView edit=(ImageView)promptsView.findViewById(R.id.edit);
+                EditText name=(EditText)promptsView.findViewById(R.id.name);
+                EditText relation=(EditText)promptsView.findViewById(R.id.relation);
+                EditText contact=(EditText)promptsView.findViewById(R.id.contact_number);
+                EditText mail=(EditText)promptsView.findViewById(R.id.email_add);
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
 
                         alertDialog.dismiss();
                     }

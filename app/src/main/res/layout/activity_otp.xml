@@ -20,30 +20,48 @@
             app:contentInsetStart="0dp"
             app:contentInsetStartWithNavigation="0dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
 
                 <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-
-                    android:src="@drawable/logo" />
-
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleY="1.2"
-                    android:scaleX="0.9"
-                    android:layout_gravity="center_vertical"
-                    android:text="SCHOOL BUS TRACKER"
-                    android:textColor="#fff"
-                    android:textSize="15dp" />
-            </LinearLayout>
+                    app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp"
+                    android:padding="10dp"
+                    android:id="@+id/back_button"
+                    />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp">
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+
+                        android:src="@drawable/logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleY="1.2"
+                        android:scaleX="0.9"
+                        android:layout_gravity="center_vertical"
+                        android:text="SCHOOL BUS TRACKER"
+                        android:textColor="#fff"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </android.support.v7.widget.Toolbar>
 
