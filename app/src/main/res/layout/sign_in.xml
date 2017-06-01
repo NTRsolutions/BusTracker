@@ -2,8 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -26,40 +25,38 @@
 
 
                 <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp"
-                android:padding="10dp"
-                    android:visibility="gone"
-                />
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp">
-
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-
-                    android:src="@drawable/logo" />
-
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleY="1.2"
-                    android:scaleX="0.9"
-                    android:layout_gravity="center_vertical"
-                    android:text="SCHOOL BUS TRACKER"
-                    android:textColor="#fff"
-                    android:textSize="15dp" />
+                    android:padding="10dp"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_keyboard_arrow_left_white_24dp" />
 
-            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp">
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+
+                        android:src="@drawable/logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:scaleX="0.9"
+                        android:scaleY="1.2"
+                        android:text="SCHOOL BUS TRACKER"
+                        android:textColor="#fff"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -95,12 +92,12 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/textBox"
                 android:hint="Enter Mobile Num"
+                android:inputType="phone"
                 android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingTop="10dp"
-                android:textSize="15dp"
-                android:inputType="phone"/>
+                android:textSize="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"

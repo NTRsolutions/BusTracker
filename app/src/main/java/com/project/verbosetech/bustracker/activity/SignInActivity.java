@@ -95,7 +95,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(SignInActivity.this,OtpActivity.class));
+                startActivity(new Intent(SignInActivity.this, OtpActivity.class));
                 finish();
             }
         });
