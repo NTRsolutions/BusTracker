@@ -1,6 +1,9 @@
 package com.project.verbosetech.bustracker.fragments;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,11 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.project.verbosetech.bustracker.R;
 import com.project.verbosetech.bustracker.activity.StudentTrackingActivity;
 import com.project.verbosetech.bustracker.models.Student;
 import com.project.verbosetech.bustracker.others.HomeRecycleGrid;
 import com.project.verbosetech.bustracker.others.PrefManager;
-import com.project.verbosetech.bustracker.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +45,11 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         pref=new PrefManager(getActivity());
+
+        Drawable d = getResources().getDrawable(R.drawable.placeholder);
+        Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(),
+                R.drawable.placeholder);
+
 
         getInformation();
         return view;

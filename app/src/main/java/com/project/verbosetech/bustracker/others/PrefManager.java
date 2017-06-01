@@ -97,6 +97,18 @@ public class PrefManager {
         editor.commit();
     }
 
+    public void setButtonNotify(int number) {
+
+        editor.putInt("bnotify", number);
+        editor.commit();
+    }
+
+    public void setButton2Notify(int number) {
+
+        editor.putInt("bnotify2", number);
+        editor.commit();
+    }
+
 
     public String getNotifyStatus() {
         return pref.getString("status", null);
@@ -128,6 +140,14 @@ public class PrefManager {
 
     public int getNotify() {
         return pref.getInt("notify", 0);
+    }
+
+    public int getButtonNotify() {
+        return pref.getInt("bnotify", 0);
+    }
+
+    public int getButton2Notify() {
+        return pref.getInt("bnotify2", 0);
     }
 
 

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.project.verbosetech.bustracker.R;
+import com.project.verbosetech.bustracker.others.PrefManager;
 
 import static com.project.verbosetech.bustracker.R.drawable.drop_bkgrnd;
 import static com.project.verbosetech.bustracker.R.drawable.pickup_bkgrnd;
@@ -22,6 +23,7 @@ public class LocationFragment extends Fragment {
 
     private View view;
     Button pickup,drop;
+    PrefManager pref;
 
 
     static {
@@ -29,10 +31,18 @@ public class LocationFragment extends Fragment {
     }
 
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        pref=new PrefManager(getActivity());
+        pref.setButton2Notify(0);
+        pref.setButtonNotify(0);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.location_main,container,false);
+
 
         intializeButtons();
 
@@ -47,6 +57,7 @@ public class LocationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                if(pref.getButtonNotify()==0){
                 pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_pickup_active, 0, 0, 0);
                 pickup.setTextColor(getResources().getColor(R.color.colorPrimary));
                 pickup.setBackground(getResources().getDrawable(pickup_bkgrnd));
@@ -59,14 +70,16 @@ public class LocationFragment extends Fragment {
                         android.R.anim.fade_out);
                 fragmentTransaction.replace(R.id.frame_location, fragment);
                 fragmentTransaction.commitAllowingStateLoss();
-
-            }
+                pref.setButtonNotify(1);
+                pref.setButton2Notify(0);
+            }}
         });
 
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                if(pref.getButton2Notify()==0){
                 drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_drop_down_active, 0, 0, 0);
                 drop.setTextColor(getResources().getColor(R.color.colorPrimary));
                 drop.setBackground(getResources().getDrawable(pickup_bkgrnd));
@@ -79,8 +92,10 @@ public class LocationFragment extends Fragment {
                         android.R.anim.fade_out);
                 fragmentTransaction.replace(R.id.frame_location, fragment);
                 fragmentTransaction.commitAllowingStateLoss();
+                    pref.setButtonNotify(0);
+                    pref.setButton2Notify(1);
 
-            }
+            }}
         });
         return view;
     }
@@ -94,6 +109,7 @@ public class LocationFragment extends Fragment {
         pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_pickup_inactive, 0, 0, 0);
         pickup.setTextColor(getResources().getColor(R.color.splashTitle));
         pickup.setBackground(getResources().getDrawable(drop_bkgrnd));
+
     }
 
     public void intializeButtons(){

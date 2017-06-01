@@ -200,7 +200,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shivaji Park,New Delhi"
+                android:text="Shivaji Park,Shivaji Park,Shivaji Park,New Delhi"
                 android:textSize="@dimen/textSize"
                 android:layout_marginLeft="10dp"/>
 

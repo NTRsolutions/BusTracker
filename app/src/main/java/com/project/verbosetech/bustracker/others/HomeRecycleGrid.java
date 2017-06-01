@@ -27,6 +27,7 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
     VenueAdapterClickCallbacks venueAdapterClickCallbacks;
     String image_address = "http://media.gettyimages.com/photos/male-high-school-student-portrait-picture-id98680202?s=170667a";
 
+
     public class MyHolder extends RecyclerView.ViewHolder
     {
         TextView name;
@@ -50,6 +51,7 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
         this.dataSet = data;
         this.venueAdapterClickCallbacks=venueAdapterClickCallback;
         context=c;
+
     }
 
     @Override
@@ -69,6 +71,10 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
         TextView status=holder.status;
         ImageView image=holder.image;
         name.setText(dataSet.get(position).getName());
+
+
+
+
 //        String p=dataSet.get(position).urlToImage;
 //
 //        if(p!=null) {
@@ -82,6 +88,7 @@ public class HomeRecycleGrid extends RecyclerView.Adapter<HomeRecycleGrid.MyHold
                 .centerCrop()
                 .override(500,500)
                 .bitmapTransform(new RoundedCornersTransformation(context,10,0, RoundedCornersTransformation.CornerType.TOP))
+                .placeholder(R.drawable.placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(image);
 
