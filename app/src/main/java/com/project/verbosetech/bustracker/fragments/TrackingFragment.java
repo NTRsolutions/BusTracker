@@ -86,7 +86,6 @@ public class TrackingFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
 
-
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
