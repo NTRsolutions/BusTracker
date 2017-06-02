@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -69,7 +70,7 @@ public class ProfileRecycleGrid extends RecyclerView.Adapter<ProfileRecycleGrid.
     }
 
     @Override
-    public void onBindViewHolder(MyHolder holder, int position) {
+    public void onBindViewHolder(MyHolder holder, final int position) {
 
         TextView name = holder.name;
         TextView relation = holder.relation;
@@ -98,6 +99,29 @@ public class ProfileRecycleGrid extends RecyclerView.Adapter<ProfileRecycleGrid.
                 LayoutInflater li = LayoutInflater.from(context);
                 View promptsView = li.inflate(R.layout.profile_new_dialog_layout, null);
                 ImageView edit=(ImageView)promptsView.findViewById(R.id.edit);
+                final EditText name=(EditText)promptsView.findViewById(R.id.name);
+                final EditText relation=(EditText)promptsView.findViewById(R.id.relation);
+                final EditText contact=(EditText)promptsView.findViewById(R.id.contact_number);
+                final EditText mail=(EditText)promptsView.findViewById(R.id.email_add);
+                ImageView img_profile=(ImageView)promptsView.findViewById(R.id.img_profile);
+                img_profile.setPadding(0,0,0,0);
+
+                Glide.with(context).load(dataSet.get(position).getImage())
+                        .centerCrop()
+                        .crossFade()
+                        .thumbnail(0.5f)
+                        .override(500,500)
+                        .bitmapTransform(new CircleTransform(context))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(img_profile);
+
+
+                name.setText(dataSet.get(position).getName());
+                relation.setText(dataSet.get(position).getRelation());
+                contact.setText(dataSet.get(position).getPhone_no());
+                mail.setText(dataSet.get(position).getEmail());
+
+
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
