@@ -44,6 +44,9 @@ public class NotificationsFragment extends DialogFragment {
     public void getNotification(){
 
         notificationsList=new ArrayList<>();
+
+        //filling cards with dummy data(Data from JSON API will be filled here)
+
         notificationsList.add(new Notifications("Drop Reminder","Bus is about to reach at drop location.","2.0 km away from shivaji park","4:30pm"));
         notificationsList.add(new Notifications("Drop Reminder","Bus is about to reach at drop location.","2.0 km away from shivaji park","4:30pm"));
         adapter=new NotificationRecycleGrid(notificationsList,getActivity());

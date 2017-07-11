@@ -191,6 +191,7 @@ public class DropFragment extends Fragment implements GoogleApiClient.Connection
                         search(Map, getLocationFromAddress(textView.getText().toString()));
                         Log.e("Addresssss", textView.getText().toString());
 
+                        //creating path for given set of dummy coordinates
                         GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,getLocationFromAddress(textView.getText().toString()),new LatLng(currentLatitude+0.005,currentLongitude+0.0005));
                         Map.addMarker(new MarkerOptions().position(new LatLng(currentLatitude+0.005,currentLongitude+0.0005)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 

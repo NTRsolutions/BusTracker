@@ -43,6 +43,8 @@ public class SplashActivity extends AppCompatActivity {
         linearLayout=(LinearLayout)findViewById(R.id.layout);
         pref=new PrefManager(getApplicationContext());
         pref.setNotifyStatus(null);
+
+        //intialising animations to be used on splash screen
         animation1 = AnimationUtils.loadAnimation(this,R.anim.shake_animation);
         animation2 = AnimationUtils.loadAnimation(this,R.anim.animate_layout);
         linearLayout.startAnimation(animation1);

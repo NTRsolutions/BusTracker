@@ -58,6 +58,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                //opening a alert dialog to add the profile card
                 LayoutInflater li = LayoutInflater.from(getActivity());
                 View promptsView = li.inflate(R.layout.profile_new_dialog_layout, null);
                 promptsView.setPadding(0,0,0,0);
@@ -97,6 +98,8 @@ public class ProfileFragment extends Fragment {
     public void getProfileCards(){
 
         profileList=new ArrayList<>();
+
+        //filling the profile cards with dummy data
         profileList.add(new Profile("Rajesh Gupta",urlProfileImg,"Father","+91 903 335 6708","rajeshgupta@gmail.com"));
         profileList.add(new Profile("Rajesh Gupta",urlProfileImg,"Father","+91 903 335 6708","rajeshgupta@gmail.com"));
         if(pref.getPName()!=null)

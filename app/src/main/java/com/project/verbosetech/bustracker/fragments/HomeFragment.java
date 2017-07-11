@@ -59,6 +59,9 @@ public class HomeFragment extends Fragment {
     public void getInformation()
     {
         studentList=new ArrayList<>();
+
+        //filling cards with dummy data(Data from JSON API will be filled here)
+
         studentList.add(new Student("Sachin Parekh ","Class 10th B Division","At School"));
         studentList.add(new Student("Sachin Parekh ","Class 10th B Division","At School"));
         adapter = new HomeRecycleGrid(getActivity(), studentList, new HomeRecycleGrid.VenueAdapterClickCallbacks() {

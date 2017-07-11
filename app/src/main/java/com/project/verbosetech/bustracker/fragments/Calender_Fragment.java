@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +13,9 @@ import android.widget.Toast;
 
 import com.project.verbosetech.bustracker.R;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.HorizontalCalendarListener;
@@ -47,6 +44,7 @@ public class Calender_Fragment extends Fragment {
         right=(ImageView) view.findViewById(R.id.increase_month);
 
 
+        //setting the start date from the first of present month
         startdate=Calendar.getInstance();
         startdate.set(Calendar.DATE,1);
         startdate.set(Calendar.HOUR, 00);
@@ -56,6 +54,7 @@ public class Calender_Fragment extends Fragment {
         startdate.add(Calendar.MONTH, 0);
 
 
+        //setting current date as the end date of the horizontal calender
         /** end after 1 month from now */
         endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH,0);
@@ -87,6 +86,8 @@ public class Calender_Fragment extends Fragment {
                 .textSizeDayNumber(15.0f)
                 .build();
 
+        //opening a fragment on every date
+
         Fragment fragment =new DatewiseFragment();
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -102,6 +103,8 @@ public class Calender_Fragment extends Fragment {
 
                 horizontalCalendar.selectDate(startdate.getTime(),true);
                 Toast.makeText(getActivity(),startdate.getTime().toString(),Toast.LENGTH_LONG).show();
+
+                //opening a fragment on every date
                 Fragment fragment =new DatewiseFragment();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -122,6 +125,8 @@ public class Calender_Fragment extends Fragment {
 //                getMonth();
                 horizontalCalendar.selectDate(endDate.getTime(),true);
                 Toast.makeText(getActivity(),startdate.getTime().toString(),Toast.LENGTH_LONG).show();
+
+                //opening a fragment on every date
                 Fragment fragment =new DatewiseFragment();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -139,6 +144,8 @@ public class Calender_Fragment extends Fragment {
                 //do something
 
                 Toast.makeText(getActivity(),date.toString(),Toast.LENGTH_LONG).show();
+
+                //opening a fragment on every date
                 Fragment fragment =new DatewiseFragment();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -158,64 +165,7 @@ public class Calender_Fragment extends Fragment {
                 return true;
             }
         });
-
-
-
-
-
-
         return view;
     }
 
-    public void getMonth(){
-
-        sdf = new SimpleDateFormat("MMMM", Locale.ENGLISH);
-        try {
-            cal_date = sdf.parse(month.getText().toString());
-            Log.e("Month",sdf.format(cal_date)+"");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        setMonth(cal_date);
-
-    }
-
-    public void setMonth(Date date){
-
-        startdate=Calendar.getInstance();
-        startdate.set(Calendar.DATE,1);
-        startdate.set(Calendar.HOUR, 00);
-        startdate.set(Calendar.MINUTE, 00);
-        startdate.set(Calendar.SECOND, 0);
-        startdate.set(Calendar.MILLISECOND, 0);
-        startdate.set(Calendar.MONTH, date.getMonth());
-
-
-        /** end after 1 month from now */
-        endDate = Calendar.getInstance();
-        endDate.set(Calendar.DATE,1);
-        endDate.set(Calendar.HOUR, 00);
-        endDate.set(Calendar.MINUTE, 00);
-        endDate.set(Calendar.SECOND, 0);
-        endDate.set(Calendar.MILLISECOND, 0);
-        endDate.set(Calendar.MONTH, date.getMonth()+1);
-
-        prevDate = Calendar.getInstance();
-        prevDate.set(Calendar.DATE,1);
-        prevDate.set(Calendar.HOUR, 00);
-        prevDate.set(Calendar.MINUTE, 00);
-        prevDate.set(Calendar.SECOND, 0);
-        prevDate.set(Calendar.MILLISECOND, 0);
-        prevDate.set(Calendar.MONTH,date.getMonth()-1);
-
-
-    }
-
-    public void setCalendar(Calendar startdate,Calendar endDate){
-
-
-
-
-
-}}
+}

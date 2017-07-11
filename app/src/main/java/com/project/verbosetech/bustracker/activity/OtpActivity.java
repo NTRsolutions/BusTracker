@@ -32,16 +32,19 @@ public class OtpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //intent back to sign in activity
                 startActivity(new Intent(OtpActivity.this,SignInActivity.class));
                 finish();
             }
         });
 
 
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                //intent to main activity
                 startActivity(new Intent(OtpActivity.this,MainActivity.class));
                 finish();
             }

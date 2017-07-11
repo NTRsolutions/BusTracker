@@ -39,6 +39,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         setContentView(R.layout.sign_in);
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
+       // to open alert dialog to ask to turn gps of the android device on
         if (googleApiClient == null) {
             googleApiClient = new GoogleApiClient.Builder(this)
                     .addApi(LocationServices.API).addConnectionCallbacks(this)
@@ -95,6 +96,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             @Override
             public void onClick(View view) {
 
+                //intent to otp activity
                 startActivity(new Intent(SignInActivity.this, OtpActivity.class));
                 finish();
             }

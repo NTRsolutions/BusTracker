@@ -57,6 +57,7 @@ public class LocationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                //changing the layout of the buttons and opening the fragment according to the button click
                 if(pref.getButtonNotify()==0){
                 pickup.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_pickup_active, 0, 0, 0);
                 pickup.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -79,6 +80,7 @@ public class LocationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                //changing the layout of the buttons and opening the fragment according to the button click
                 if(pref.getButton2Notify()==0){
                 drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_drop_down_active, 0, 0, 0);
                 drop.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -103,6 +105,8 @@ public class LocationFragment extends Fragment {
     public void changeButton()
     {
         intializeButtons();
+
+        //changing the layout of the buttons
         drop.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_drop_down_active, 0, 0, 0);
         drop.setTextColor(getResources().getColor(R.color.colorPrimary));
         drop.setBackground(getResources().getDrawable(pickup_bkgrnd));
@@ -114,7 +118,7 @@ public class LocationFragment extends Fragment {
 
     public void intializeButtons(){
 
-
+        //intailaizing buttons
         pickup=(Button)view.findViewById(R.id.pick_up);
         drop=(Button)view.findViewById(R.id.drop);
     }

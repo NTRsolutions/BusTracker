@@ -45,6 +45,8 @@ public class StudentTrackingActivity extends AppCompatActivity {
             }
         });
 
+
+        //opening the tracking fragment
         Fragment fragment = new TrackingFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -70,6 +72,8 @@ public class StudentTrackingActivity extends AppCompatActivity {
                 pref.setNotifyStatus("1");
                 Log.e("1", "1");
             } else {
+
+                //removing the fragment on the top of stack in fragment container
                 getSupportFragmentManager().popBackStack();
                 pref.setNotifyStatus(null);
                 Log.e("Null", "Null");

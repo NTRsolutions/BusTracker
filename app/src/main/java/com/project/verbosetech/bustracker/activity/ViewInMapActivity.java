@@ -22,7 +22,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -284,18 +283,25 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
 //                        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 //                        layoutParams.setMargins(0,0,0,0);
 
+
+
+
+
+                    //dummy coordinates are used here
+
                     search(Map,new LatLng(26.2520000,78.1889999));
+
+                    //drawing green path on the map
 
                     GoogleMapPath googleMapPath=new GoogleMapPath(ViewInMapActivity.this,Map,new LatLng(26.2520000,78.1889999),new LatLng(26.2520944,78.1794855));
 
                     Map.addMarker(new MarkerOptions().position(new LatLng(26.2520944,78.1794855)).title("Bus").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
+                    //drawing the red path from the end of green path
+
                     GoogleMapsPath googleMapsPath=new GoogleMapsPath(ViewInMapActivity.this,Map,new LatLng(26.2520944,78.1794855),new LatLng(26.2530944,78.1798855));
 
                     Map.addMarker(new MarkerOptions().position(new LatLng(26.2530944,78.1798855)).title("Home").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-
-
-
 
                 }
             });
@@ -452,10 +458,9 @@ public class ViewInMapActivity extends AppCompatActivity implements GoogleApiCli
     @Override
     public void onLocationChanged(Location location) {
 
+       //getting the location co-ordinates on location change
         currentLatitude = location.getLatitude();
         currentLongitude = location.getLongitude();
-
-        Toast.makeText(getApplicationContext(), currentLatitude + " WORKS " + currentLongitude + "", Toast.LENGTH_LONG).show();
 
     }
 }

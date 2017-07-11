@@ -55,7 +55,7 @@ import java.util.List;
  * Created by this pc on 14-05-17.
  */
 
-public class PIckUpFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,LocationListener {
+    public class PIckUpFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,LocationListener {
 
     private View view;
     private GoogleMap Map;
@@ -107,6 +107,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
             @Override
             public void onClick(View view) {
 
+                //changing the layout of the button in used as tab button in fragment and opening drop fragment
                 LocationFragment locationFragment = (LocationFragment) getActivity().getSupportFragmentManager().findFragmentByTag("edit location");
                 locationFragment.changeButton();
                 Fragment fragment = new DropFragment();
@@ -122,6 +123,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
             @Override
             public void onClick(View view) {
 
+                //opening a alert dialog to set reminder time
                 LayoutInflater li = LayoutInflater.from(getActivity());
                 View promptsView = li.inflate(R.layout.pickup_dialog, null);
                 Button skip = (Button) promptsView.findViewById(R.id.skip);
@@ -132,6 +134,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
                     @Override
                     public void onClick(View view) {
 
+                        //adding "0.5" on "+" click
                         double cal_dist,d;
                         String a[]=distance.getText().toString().split(" ");
                         d=Double.parseDouble(a[0]);
@@ -145,6 +148,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
                     @Override
                     public void onClick(View view) {
 
+                        //subtracting "0.5" on "-" click
                         double cal_dist=0.0,d;
                         String a[]=distance.getText().toString().split(" ");
                         d=Double.parseDouble(a[0]);
@@ -219,6 +223,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
                     Toast.makeText(getActivity(),currentLatitude+" ,"+currentLongitude,Toast.LENGTH_LONG).show();
                     search(Map,new LatLng(currentLatitude,currentLongitude));
 
+                    //creating a google path with dummy coordinates(current location coordinates)
                     GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,new LatLng(currentLatitude,currentLongitude),new LatLng(currentLatitude+0.005,currentLongitude+0.0005));
 
                     Map.addMarker(new MarkerOptions().position(new LatLng(currentLatitude+0.005,currentLongitude+0.0005)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
@@ -234,6 +239,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
                         search(Map, getLocationFromAddress(textView.getText().toString()));
                         Log.e("Addresssss", textView.getText().toString());
 
+                        //creating a google path with dummy coordinates(current location coordinates)
                         GoogleMapsPath googleMapsPath=new GoogleMapsPath(getActivity(),Map,getLocationFromAddress(textView.getText().toString()),new LatLng(currentLatitude+0.005,currentLongitude+0.0005));
                         Map.addMarker(new MarkerOptions().position(new LatLng(currentLatitude+0.005,currentLongitude+0.0005)).title("Marker").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
@@ -421,7 +427,7 @@ public class PIckUpFragment extends Fragment implements GoogleApiClient.Connecti
 
         currentLatitude = location.getLatitude();
         currentLongitude = location.getLongitude();
-        Toast.makeText(getActivity(), currentLatitude + " WORKS " + currentLongitude + "", Toast.LENGTH_LONG).show();
+
 
     }
 }

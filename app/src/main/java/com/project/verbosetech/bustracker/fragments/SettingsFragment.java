@@ -75,6 +75,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
             case R.id.pickup_change:
 
+                //alert dialog to set pick up reminder
                 li = LayoutInflater.from(getActivity());
                 promptsView = li.inflate(R.layout.pickup_dialog, null);
                 Button skip = (Button) promptsView.findViewById(R.id.skip);
@@ -123,6 +124,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.drop_change:
+
+                //alert dialog to set drop reminder
 
                 li = LayoutInflater.from(getActivity());
                 promptsView = li.inflate(R.layout.dropdialog_layout, null);
